@@ -2,49 +2,73 @@ import "./App.css";
 import "nes.css/css/nes.min.css";
 import Gallery from "./Gallery";
 import Templets from "./Templets";
-import styled from "styled-components";
-import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
-
-const Header = styled.div`
-  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.875em;
-  font-weight: 400;
-  background-color: #222222;
-  color: #bbbbbb;
-  text-align: center;
-`;
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import React, { useState } from "react";
+import Header from "./Header";
+import Basket from "./Basket";
+import Details from "./Details";
+import { data } from "./data";
+import Login from "./Login";
 
 function App() {
+  let [cartItems, setCartItems] = useState([]);
+  const products = data;
+  const onAdd = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
+  };
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+        )
+      );
+    }
+  };
   return (
     <BrowserRouter>
       <div className="App">
-        <Header>
-          <Link to="/">
-            <button type="button" className="nes-btn is-success buttona">
-              Home
-            </button>
-          </Link>
-          <Link to="/gallery">
-            <button type="button" className="nes-btn is-success buttonb">
-              Sample Packs
-            </button>
-          </Link>
-          <Link to="/templets">
-            <button type="button" className="nes-btn is-success buttonb">
-              Templets
-            </button>
-          </Link>
-        </Header>
-
+        <Header
+          cartItems={cartItems}
+          products={products}
+          onAdd={onAdd}
+          onRemove={onRemove}
+        />
         <Switch>
           <Route exact path="/gallery">
-            <Gallery />
+            <Gallery products={products} onAdd={onAdd} />
           </Route>
           <Route exact path="/">
             <h1 className="text">Trippyy Samples</h1>
           </Route>
           <Route exact path="/templets">
             <Templets />
+          </Route>
+          <Route exact path="/details">
+            <Details />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/basket">
+            <Basket
+              cartItems={cartItems}
+              products={products}
+              onAdd={onAdd}
+              onRemove={onRemove}
+            />
           </Route>
         </Switch>
       </div>

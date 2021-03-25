@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import _ from "lodash";
-import { data } from "./data";
 import "nes.css/css/nes.min.css";
-
+import { Link } from "react-router-dom";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -13,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Product = styled.div`
-  border: 1px solid ${({ isExpensive }) => (isExpensive ? "blue" : "black")};
+  border: 1px solid;
   margin: 4px;
   margin-left: 2px;
   margin-right: 2px;
@@ -27,17 +26,19 @@ const FiltersContainer = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 2px;
   width: 25%;
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const VIEW_ALL = "All";
 
-const Gallery = () => {
+const Gallery = ({ onAdd, products, onRemove }) => {
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
-  const genres = _.uniq(_.map(data, "genre"));
+  const genres = _.uniq(_.map(products, "genre"));
   genres.unshift(VIEW_ALL);
-  console.log(selectedGenre);
   return (
     <Container>
       <FiltersContainer>
@@ -51,16 +52,28 @@ const Gallery = () => {
         </select>
       </FiltersContainer>
       <Grid>
-        {data
+        {products
           .filter(
             ({ genre }) => selectedGenre === VIEW_ALL || genre === selectedGenre
           )
-          .map(({ title, id, price, genre, img, audioUrl }) => (
-            <Product isExpensive={price > 15}>
-              <div>{title}</div>
-              <div>{price}$</div>
-              <img width={80} height={80} src={img} />
-              <audio src={audioUrl} controls="Play" />
+          .map((product) => (
+            <Product
+              isExpensive={product.price > 15}
+              title={product.title}
+              id={product.id}
+              price={product.price}
+              genre={product.genre}
+              img={product.img}
+              audioUrl={product.audioUrl}
+            >
+              <div>{product.title}</div>
+              <div>{product.price}$</div>
+              <img width={100} height={100} src={product.img} alt="1" />
+              <audio src={product.audioUrl} controls="Play" />
+              <button onClick={() => onAdd(product)}>Add To Cart</button>
+              <button>
+                <Link to="/details">More Info</Link>
+              </button>
             </Product>
           ))}
       </Grid>

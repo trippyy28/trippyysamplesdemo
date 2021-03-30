@@ -27,10 +27,10 @@ const Basket = ({ cartItems, onAdd, product, onRemove }) => {
       {cartItems.map((item) => (
         <div key={item.id}>
           <Product>
-            <div>{item.genre}</div>
+            <div>{item.title}</div>
             <img src={item.img} width={100} height={100} />
             <div>{item.price}$</div>
-            <button>Buy!</button>
+            <div>{item.qty}</div>
             <button onClick={() => onRemove(item)}>Remove</button>
           </Product>
         </div>

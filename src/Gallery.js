@@ -12,10 +12,11 @@ const Container = styled.div`
 `;
 
 const Product = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   border: 1px solid;
-  margin: 4px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin: 2px;
 `;
 
 const FiltersContainer = styled.div`
@@ -26,7 +27,6 @@ const FiltersContainer = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 25%;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;

@@ -36,7 +36,7 @@ export const data = [
     genre: "Minimal",
     price: "10",
     id: "4",
-    title: "Groove From Space",
+    title: "Space Groove",
     img:
       "https://cdna.artstation.com/p/assets/images/images/000/613/868/large/hendry-roesly-chr8bit.jpg?1428583453",
     audioUrl:

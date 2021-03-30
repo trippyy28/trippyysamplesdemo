@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/trippyysamplesdemo/static/css/main.e20f39a1.chunk.css",
+    "main.js": "/trippyysamplesdemo/static/js/main.8436aeb4.chunk.js",
+    "main.js.map": "/trippyysamplesdemo/static/js/main.8436aeb4.chunk.js.map",
+    "runtime-main.js": "/trippyysamplesdemo/static/js/runtime-main.a0461fc8.js",
+    "runtime-main.js.map": "/trippyysamplesdemo/static/js/runtime-main.a0461fc8.js.map",
+    "static/css/2.3c2d599a.chunk.css": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css",
+    "static/js/2.6242fdaf.chunk.js": "/trippyysamplesdemo/static/js/2.6242fdaf.chunk.js",
+    "static/js/2.6242fdaf.chunk.js.map": "/trippyysamplesdemo/static/js/2.6242fdaf.chunk.js.map",
+    "static/js/3.4b080bd3.chunk.js": "/trippyysamplesdemo/static/js/3.4b080bd3.chunk.js",
+    "static/js/3.4b080bd3.chunk.js.map": "/trippyysamplesdemo/static/js/3.4b080bd3.chunk.js.map",
+    "index.html": "/trippyysamplesdemo/index.html",
+    "static/css/2.3c2d599a.chunk.css.map": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css.map",
+    "static/css/main.e20f39a1.chunk.css.map": "/trippyysamplesdemo/static/css/main.e20f39a1.chunk.css.map",
+    "static/js/2.6242fdaf.chunk.js.LICENSE.txt": "/trippyysamplesdemo/static/js/2.6242fdaf.chunk.js.LICENSE.txt",
+    "static/media/shopping-cart-outline-svgrepo-com.8b70f067.svg": "/trippyysamplesdemo/static/media/shopping-cart-outline-svgrepo-com.8b70f067.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0461fc8.js",
+    "static/css/2.3c2d599a.chunk.css",
+    "static/js/2.6242fdaf.chunk.js",
+    "static/css/main.e20f39a1.chunk.css",
+    "static/js/main.8436aeb4.chunk.js"
+  ]
+}

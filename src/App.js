@@ -1,14 +1,18 @@
 import "./App.css";
 import "nes.css/css/nes.min.css";
-import Gallery from "./Gallery";
+import Gallery from "./components/Gallery";
 import Templets from "./Templets";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import React, { useState } from "react";
 import Header from "./Header";
-import Basket from "./Basket";
-import Details from "./Details";
+import Basket from "./components/Basket";
+import Details from "./components/Details";
 import { data } from "./data";
-import Login from "./Login";
+import Login from "./auth/Login";
+import HomePage from "./HomePage";
+import Signup from "./auth/Signup";
+import { AuthProvider } from "./contexts/AuthContext";
+import Checkout from "./components/Checkout";
 
 function App() {
   let [cartItems, setCartItems] = useState([]);
@@ -38,41 +42,49 @@ function App() {
     }
   };
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header
-          cartItems={cartItems}
-          products={products}
-          onAdd={onAdd}
-          onRemove={onRemove}
-        />
-        <Switch>
-          <Route exact path="/gallery">
-            <Gallery products={products} onAdd={onAdd} />
-          </Route>
-          <Route exact path="/">
-            <h1 className="text">Trippyy Samples</h1>
-          </Route>
-          <Route exact path="/templets">
-            <Templets />
-          </Route>
-          <Route exact path="/details">
-            <Details />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/basket">
-            <Basket
-              cartItems={cartItems}
-              products={products}
-              onAdd={onAdd}
-              onRemove={onRemove}
-            />
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <div className="App">
+          <Header
+            cartItems={cartItems}
+            products={products}
+            onAdd={onAdd}
+            onRemove={onRemove}
+          />
+          <Switch>
+            <Route exact path="/gallery">
+              <Gallery products={products} onAdd={onAdd} />
+            </Route>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route exact path="/templets">
+              <Templets />
+            </Route>
+            <Route exact path="/details">
+              <Details />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout />
+            </Route>
+            <Route exact path="/basket">
+              <Basket
+                cartItems={cartItems}
+                products={products}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

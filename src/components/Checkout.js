@@ -4,7 +4,7 @@ const Checkout = (props) => {
   return (
     <div>
       <h2>Your Price is:{props.totalPrice}$</h2>
-      <button>CheckOut!</button>
+      <button>Check Out!</button>
     </div>
   );
 };

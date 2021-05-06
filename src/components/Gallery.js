@@ -14,6 +14,7 @@ const Container = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   border: 1px solid;
   margin: 2px;

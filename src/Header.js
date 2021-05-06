@@ -1,48 +1,64 @@
 import React, { useState } from "react";
-import { Switch, Link } from "react-router-dom";
+import { Switch, Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import { ReactComponent as CaretIcon } from "./icons/shopping-cart-outline-svgrepo-com.svg";
-import Basket from './Basket'
+import Basket from "./components/Basket";
+import { useAuth } from "./contexts/AuthContext";
 
 const HeaderMenu = styled.div`
   flex: 1;
-`
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+`;
 
 const RightHeaderMenu = styled.div`
   flex: 1;
   text-align: right;
-`
+  margin-right: 20px;
+`;
 
 const Background = styled.div`
-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 0.875em;
-font-weight: 400;
-background-color: #222222;
-color: #bbbbbb;
-text-align: center;
-display: flex;
+  font-family: "Comic Sans MS";
+  font-size: 0.875em;
+  font-weight: 400;
+  background-color: #222222;
+  color: #bbbbbb;
+  text-align: center;
+  display: flex;
 `;
 
 const Header = ({ cartItems, products, onAdd, onRemove }) => {
+  const [error, setError] = useState("");
+  const { currentUser } = useAuth();
+  const { logout } = useAuth();
+  const history = useHistory();
+
+  async function handleLogout() {
+    setError("");
+    try {
+      await logout();
+      history.push("/");
+    } catch {
+      setError("Failed to log out");
+    }
+  }
   return (
     <Background>
-    <HeaderMenu />
+      <HeaderMenu />
       <HeaderMenu>
         <Link to="/">
-          <button type="button" className="nes-btn is-primary buttona">
-            Home
-          </button>
+          <h2>Home</h2>
         </Link>
         <Link to="/gallery">
-          <button type="button" className="nes-btn is-primary buttonb">
-            Sample Packs
-          </button>
+          <h2>Sample Packs</h2>
         </Link>
         <Link to="/templets">
-          <button type="button" className="nes-btn is-primary buttonb">
-            Templets
-          </button>
+          <h2>Templets</h2>
         </Link>
       </HeaderMenu>
       <RightHeaderMenu>
@@ -51,26 +67,32 @@ const Header = ({ cartItems, products, onAdd, onRemove }) => {
           trigger={["click"]}
           overlay={
             <Tooltip id="button-tooltip-2">
-            <Basket
-            cartItems={cartItems}
-            products={products}
-            onAdd={onAdd}
-            onRemove={onRemove}
-          />
+              <Basket
+                cartItems={cartItems}
+                products={products}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
             </Tooltip>
           }
         >
           {({ ...triggerHandler }) => (
-            <button
-              type="button"
-              {...triggerHandler}
-              className="nes-btn is-primary buttonb"
-            >
+            <h3 className="rightSection" {...triggerHandler}>
               Basket ({cartItems.length})
-            </button>
+            </h3>
           )}
         </OverlayTrigger>
       </RightHeaderMenu>
+      {error && <Alert variant="danger">{error}</Alert>}
+      {currentUser ? (
+        <h3 className="rightSection login" onClick={handleLogout}>
+          Logout
+        </h3>
+      ) : (
+        <Link to="/login">
+          <h3 className="rightSection login">Login</h3>
+        </Link>
+      )}
     </Background>
   );
 };

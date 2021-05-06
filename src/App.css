@@ -9,6 +9,10 @@
   font-family: "Press Start 2P", cursive;
 }
 
-.buttons {
-  text-align: center;
+.rightSection {
+  color: white;
+}
+
+.login {
+  margin-right: 2px;
 }

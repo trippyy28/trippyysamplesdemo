@@ -9,12 +9,14 @@ const Container = styled.div`
   margin-right: 20px;
   margin-top: 20px;
   background-color: white;
+  text-align: center;
 `;
 const Product = styled.div`
   border: 1px solid ${({ isExpensive }) => (isExpensive ? "blue" : "black")};
   margin: 4px;
   margin-left: 2px;
   margin-right: 2px;
+  text-align: center;
 `;
 const Basket = ({ cartItems, onAdd, product, onRemove }) => {
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
@@ -35,10 +37,6 @@ const Basket = ({ cartItems, onAdd, product, onRemove }) => {
           </Product>
         </div>
       ))}
-
-      <Route exact path="/checkout">
-        <Checkout totalPrice={totalPrice} />
-      </Route>
 
       <Link to="/checkout">
         <button type="button" className="nes-btn is-primary">

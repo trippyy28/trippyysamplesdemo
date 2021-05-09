@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, Route, Switch } from "react-router-dom";
+import { useBasket } from "../contexts/BasketContext";
 import Checkout from "./Checkout";
 const Container = styled.div`
   border: 2px solid black;
@@ -18,9 +19,11 @@ const Product = styled.div`
   margin-right: 2px;
   text-align: center;
 `;
-const Basket = ({ cartItems, onAdd, product, onRemove }) => {
-  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
-  const totalPrice = itemsPrice;
+const Basket = () => {
+  const { cartItems } = useBasket();
+  const { onRemove } = useBasket();
+  const { totalPrice } = useBasket();
+
   return (
     <Container>
       <h2>Cart Items</h2>

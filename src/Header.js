@@ -5,6 +5,7 @@ import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import { ReactComponent as CaretIcon } from "./icons/shopping-cart-outline-svgrepo-com.svg";
 import Basket from "./components/Basket";
 import { useAuth } from "./contexts/AuthContext";
+import { useBasket } from "./contexts/BasketContext";
 
 const HeaderMenu = styled.div`
   flex: 1;
@@ -32,10 +33,14 @@ const Background = styled.div`
   display: flex;
 `;
 
-const Header = ({ cartItems, products, onAdd, onRemove }) => {
+const Header = () => {
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
   const { logout } = useAuth();
+  const { cartItems } = useBasket();
+  const { products } = useBasket();
+  const { onAdd } = useBasket();
+  const { onRemove } = useBasket();
   const history = useHistory();
 
   async function handleLogout() {
@@ -67,12 +72,7 @@ const Header = ({ cartItems, products, onAdd, onRemove }) => {
           trigger={["click"]}
           overlay={
             <Tooltip id="button-tooltip-2">
-              <Basket
-                cartItems={cartItems}
-                products={products}
-                onAdd={onAdd}
-                onRemove={onRemove}
-              />
+              <Basket />
             </Tooltip>
           }
         >

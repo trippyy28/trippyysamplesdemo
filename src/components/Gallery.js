@@ -3,6 +3,7 @@ import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
 import { Link } from "react-router-dom";
+import { useBasket } from "../contexts/BasketContext";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -36,7 +37,11 @@ const Grid = styled.div`
 
 const VIEW_ALL = "All";
 
-const Gallery = ({ onAdd, products, onRemove }) => {
+const Gallery = () => {
+  const { cartItems } = useBasket();
+  const { products } = useBasket();
+  const { onAdd } = useBasket();
+  const { onRemove } = useBasket();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(products, "genre"));
   genres.unshift(VIEW_ALL);
@@ -83,5 +88,3 @@ const Gallery = ({ onAdd, products, onRemove }) => {
 };
 
 export default Gallery;
-// useState
-// design

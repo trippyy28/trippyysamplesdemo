@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import { ReactComponent as CaretIcon } from "./icons/shopping-cart-outline-svgrepo-com.svg";
@@ -38,9 +38,6 @@ const Header = () => {
   const { currentUser } = useAuth();
   const { logout } = useAuth();
   const { cartItems } = useBasket();
-  const { products } = useBasket();
-  const { onAdd } = useBasket();
-  const { onRemove } = useBasket();
   const history = useHistory();
 
   async function handleLogout() {
@@ -56,10 +53,10 @@ const Header = () => {
     <Background>
       <HeaderMenu />
       <HeaderMenu>
-        <Link to="/">
-          <h2>Home</h2>
+        <Link to="/about">
+          <h2>About</h2>
         </Link>
-        <Link to="/gallery">
+        <Link to="/">
           <h2>Sample Packs</h2>
         </Link>
         <Link to="/templets">

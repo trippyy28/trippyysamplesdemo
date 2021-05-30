@@ -4,12 +4,10 @@ import _ from "lodash";
 import "nes.css/css/nes.min.css";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
+import { useAudio } from "../contexts/AudioContext";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
 `;
 
 const Product = styled.div`
@@ -38,10 +36,9 @@ const Grid = styled.div`
 const VIEW_ALL = "All";
 
 const Gallery = () => {
-  const { cartItems } = useBasket();
   const { products } = useBasket();
   const { onAdd } = useBasket();
-  const { onRemove } = useBasket();
+  const { playAudio } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(products, "genre"));
   genres.unshift(VIEW_ALL);
@@ -75,8 +72,12 @@ const Gallery = () => {
               <div>{product.title}</div>
               <div>{product.price}$</div>
               <img width={100} height={100} src={product.img} alt="1" />
-              <audio src={product.audioUrl} controls="Play" />
-              <button onClick={() => onAdd(product)}>Add To Cart</button>
+              {/* <audio src={product.audioUrl} controls="Play" /> */}
+
+              <button onClick={() => playAudio(product.audioUrl)}>Play</button>
+              <button onClick={() => onAdd(product)} width={20}>
+                Add To Cart
+              </button>
               <button>
                 <Link to="/details">More Info</Link>
               </button>

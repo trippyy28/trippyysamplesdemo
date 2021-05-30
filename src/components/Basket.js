@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
-import Checkout from "./Checkout";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -23,7 +22,6 @@ const Basket = () => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
-
   return (
     <Container>
       <h2>Cart Items</h2>
@@ -33,7 +31,7 @@ const Basket = () => {
         <div key={item.id}>
           <Product>
             <div>{item.title}</div>
-            <img src={item.img} width={100} height={100} />
+            <img src={item.img} width={100} height={100} alt={item.id} />
             <div>{item.price}$</div>
             <div>{item.qty}</div>
             <button onClick={() => onRemove(item)}>Remove</button>

@@ -3,7 +3,7 @@ import "nes.css/css/nes.min.css";
 import Gallery from "./components/Gallery";
 import Templets from "./Templets";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
 import Basket from "./components/Basket";
 import Details from "./components/Details";
@@ -12,43 +12,48 @@ import HomePage from "./HomePage";
 import Signup from "./auth/Signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BasketProvider } from "./contexts/BasketContext";
+import { AudioProvider } from "./contexts/AudioContext";
 import Checkout from "./components/Checkout";
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
   return (
     <AuthProvider>
       <BasketProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Route exact path="/gallery">
-                <Gallery />
-              </Route>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/templets">
-                <Templets />
-              </Route>
-              <Route exact path="/details">
-                <Details />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/checkout">
-                <Checkout />
-              </Route>
-              <Route exact path="/basket">
-                <Basket />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
+        <AudioProvider>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <div className="App">
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Gallery />
+                </Route>
+                <Route exact path="/about">
+                  <HomePage />
+                </Route>
+                <Route exact path="/templets">
+                  <Templets />
+                </Route>
+                <Route exact path="/details">
+                  <Details />
+                </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <Route exact path="/checkout">
+                  <Checkout />
+                </Route>
+                <Route exact path="/basket">
+                  <Basket />
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />
+                </Route>
+              </Switch>
+            </div>
+          </BrowserRouter>
+          <AudioPlayer />
+        </AudioProvider>
       </BasketProvider>
     </AuthProvider>
   );

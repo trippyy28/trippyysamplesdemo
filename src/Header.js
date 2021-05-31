@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
-import { ReactComponent as CaretIcon } from "./icons/shopping-cart-outline-svgrepo-com.svg";
 import Basket from "./components/Basket";
 import { useAuth } from "./contexts/AuthContext";
 import { useBasket } from "./contexts/BasketContext";

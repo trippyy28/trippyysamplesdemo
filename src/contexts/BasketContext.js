@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import { data } from "../../src/data";
+import { templetsData } from "../../src/templetsdata";
 
 const BasketContext = React.createContext();
 
@@ -10,6 +11,7 @@ export function useBasket() {
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
   const products = data;
+  const templets = templetsData;
 
   const onAdd = (product) => {
     const cartItem = cartItems.find((x) => x.id === product.id);
@@ -46,6 +48,7 @@ export function BasketProvider({ children }) {
     onRemove,
     itemsPrice,
     totalPrice,
+    templets,
   };
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>

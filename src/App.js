@@ -1,7 +1,7 @@
 import "./App.css";
 import "nes.css/css/nes.min.css";
 import Gallery from "./components/Gallery";
-import Templets from "./Templets";
+import Templets from "./components/Templets";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import React from "react";
 import Header from "./Header";

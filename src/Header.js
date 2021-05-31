@@ -11,6 +11,7 @@ const HeaderMenu = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
+  background-color: black;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -21,13 +22,14 @@ const RightHeaderMenu = styled.div`
   flex: 1;
   text-align: right;
   margin-right: 20px;
+  background-color: black;
 `;
 
 const Background = styled.div`
   font-family: "Comic Sans MS";
   font-size: 0.875em;
   font-weight: 400;
-  background-color: #222222;
+  background-color: black;
   color: #bbbbbb;
   text-align: center;
   display: flex;

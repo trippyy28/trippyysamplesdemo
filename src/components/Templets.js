@@ -39,6 +39,7 @@ const Templets = () => {
   const { playAudio } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(templets, "genre"));
+  genres.unshift(VIEW_ALL);
   return (
     <Container>
       <FiltersContainer>

@@ -19,7 +19,7 @@ const Product = styled.div`
 `;
 
 const FiltersContainer = styled.div`
-  background-color: #fc814a;
+  background-color: #576ca8;
   padding: 4px;
 `;
 

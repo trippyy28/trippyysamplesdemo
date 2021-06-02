@@ -19,6 +19,7 @@ const HeaderMenu = styled.div`
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
+    margin: 10px;
   }
 `;
 
@@ -36,12 +37,15 @@ const LeftHeaderMenu = styled.div`
 
 const Background = styled.div`
   font-family: "Comic Sans MS";
-  /* font-size: 0.875em;
-  font-weight: 400; */
+  font-size: 0.875em;
+  font-weight: 400;
   background-color: black;
-
-  /* text-align: center; */
+  text-align: center;
   display: flex;
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Header = () => {
@@ -64,12 +68,12 @@ const Header = () => {
     <Background>
       <LeftHeaderMenu>
         <Link to="/about">
-          <img src={trippysamples}></img>
+          <img src={trippysamples} className="logo"></img>
         </Link>
       </LeftHeaderMenu>
       <HeaderMenu>
         <Link to="/about">
-          <img src={about}></img>
+          <img src={about} className="link"></img>
         </Link>
         <Link to="/">
           <img src={samplepacks}></img>

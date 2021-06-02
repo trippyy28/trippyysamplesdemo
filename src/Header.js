@@ -5,12 +5,17 @@ import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import Basket from "./components/Basket";
 import { useAuth } from "./contexts/AuthContext";
 import { useBasket } from "./contexts/BasketContext";
+import templets from "./XD/Templets.png";
+import samplepacks from "./XD/Samples.png";
+import about from "./XD/About.png";
+import trippysamples from "./XD/TrippySamples.png";
 
 const HeaderMenu = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  background-color: black;
+  margin-left: 200px;
+  margin-top: 20px;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -23,14 +28,19 @@ const RightHeaderMenu = styled.div`
   margin-right: 20px;
   background-color: black;
 `;
+const LeftHeaderMenu = styled.div`
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+`;
 
 const Background = styled.div`
   font-family: "Comic Sans MS";
-  font-size: 0.875em;
-  font-weight: 400;
+  /* font-size: 0.875em;
+  font-weight: 400; */
   background-color: black;
-  color: #bbbbbb;
-  text-align: center;
+
+  /* text-align: center; */
   display: flex;
 `;
 
@@ -52,16 +62,20 @@ const Header = () => {
   }
   return (
     <Background>
-      <HeaderMenu />
+      <LeftHeaderMenu>
+        <Link to="/about">
+          <img src={trippysamples}></img>
+        </Link>
+      </LeftHeaderMenu>
       <HeaderMenu>
         <Link to="/about">
-          <h2>About</h2>
+          <img src={about}></img>
         </Link>
         <Link to="/">
-          <h2>Sample Packs</h2>
+          <img src={samplepacks}></img>
         </Link>
         <Link to="/templets">
-          <h2>Templets</h2>
+          <img src={templets}></img>
         </Link>
       </HeaderMenu>
       <RightHeaderMenu>
@@ -81,6 +95,7 @@ const Header = () => {
           )}
         </OverlayTrigger>
       </RightHeaderMenu>
+
       {error && <Alert variant="danger">{error}</Alert>}
       {currentUser ? (
         <h3 className="rightSection login" onClick={handleLogout}>

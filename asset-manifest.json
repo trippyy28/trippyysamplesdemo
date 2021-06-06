@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/trippyysamplesdemo/static/css/main.8e447409.chunk.css",
-    "main.js": "/trippyysamplesdemo/static/js/main.1eca9c40.chunk.js",
-    "main.js.map": "/trippyysamplesdemo/static/js/main.1eca9c40.chunk.js.map",
+    "main.css": "/trippyysamplesdemo/static/css/main.042f06a2.chunk.css",
+    "main.js": "/trippyysamplesdemo/static/js/main.38f87831.chunk.js",
+    "main.js.map": "/trippyysamplesdemo/static/js/main.38f87831.chunk.js.map",
     "runtime-main.js": "/trippyysamplesdemo/static/js/runtime-main.e86f24c0.js",
     "runtime-main.js.map": "/trippyysamplesdemo/static/js/runtime-main.e86f24c0.js.map",
     "static/css/2.3c2d599a.chunk.css": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.48aba062.chunk.js.map": "/trippyysamplesdemo/static/js/3.48aba062.chunk.js.map",
     "index.html": "/trippyysamplesdemo/index.html",
     "static/css/2.3c2d599a.chunk.css.map": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css.map",
-    "static/css/main.8e447409.chunk.css.map": "/trippyysamplesdemo/static/css/main.8e447409.chunk.css.map",
+    "static/css/main.042f06a2.chunk.css.map": "/trippyysamplesdemo/static/css/main.042f06a2.chunk.css.map",
     "static/js/2.ae60b58d.chunk.js.LICENSE.txt": "/trippyysamplesdemo/static/js/2.ae60b58d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e86f24c0.js",
     "static/css/2.3c2d599a.chunk.css",
     "static/js/2.ae60b58d.chunk.js",
-    "static/css/main.8e447409.chunk.css",
-    "static/js/main.1eca9c40.chunk.js"
+    "static/css/main.042f06a2.chunk.css",
+    "static/js/main.38f87831.chunk.js"
   ]
 }

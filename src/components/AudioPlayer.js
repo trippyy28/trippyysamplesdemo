@@ -6,11 +6,12 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import "./audio.css";
 const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState("");
+  // const [isPlaying, setIsPlaying] = useState("");
   const [duration, setDuration] = useState(0);
   /*use ref */
   const { audioPlayer } = useAudio();
-
+  const { isPlaying } = useAudio();
+  const { setIsPlaying } = useAudio();
   const { audioUrl } = useAudio();
 
   const togglePlayPause = () => {

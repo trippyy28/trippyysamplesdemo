@@ -29,6 +29,7 @@ export function AudioProvider({ children }) {
     togglePlayPause,
     isPlaying,
     audioPlayer,
+    setIsPlaying,
   };
   return (
     <AudioContext.Provider value={value}>{children}</AudioContext.Provider>

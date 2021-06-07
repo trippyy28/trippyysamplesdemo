@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
 import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
+import { FaPause } from "react-icons/fa";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -40,7 +41,9 @@ const Gallery = () => {
   const { products } = useBasket();
   const { onAdd } = useBasket();
   const { togglePlayPause } = useAudio();
-  const { audioPlayer } = useAudio();
+  // const { audioPlayer } = useAudio();
+  const { audioUrl } = useAudio();
+  const { isPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(products, "genre"));
   genres.unshift(VIEW_ALL);
@@ -63,7 +66,6 @@ const Gallery = () => {
           )
           .map((product) => (
             <Product
-              isExpensive={product.price > 15}
               title={product.title}
               id={product.id}
               price={product.price}
@@ -77,7 +79,11 @@ const Gallery = () => {
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
               <button onClick={() => togglePlayPause(product.audioUrl)}>
-                <FaPlay />
+                {audioUrl === product.audioUrl && isPlaying ? (
+                  <FaPause />
+                ) : (
+                  <FaPlay />
+                )}
               </button>
               <button onClick={() => onAdd(product)} width={20}>
                 Add To Cart

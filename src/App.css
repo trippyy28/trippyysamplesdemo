@@ -4,8 +4,7 @@
   box-sizing: border-box;
   margin: 0;
 }
-body {
-}
+
 .App {
   text-align: center;
   font-family: "Press Start 2P", cursive;
@@ -18,11 +17,7 @@ body {
 }
 
 .login {
-  margin-right: 2px;
-}
-
-audio {
-  width: 100%;
+  margin-right: 4px;
 }
 
 iframe {

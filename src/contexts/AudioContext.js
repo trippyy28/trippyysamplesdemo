@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 
 const AudioContext = React.createContext();
 
@@ -7,13 +7,28 @@ export function useAudio() {
 }
 export function AudioProvider({ children }) {
   let [audioUrl, setAudioUrl] = useState("");
-  function playAudio(e) {
+  const [isPlaying, setIsPlaying] = useState("");
+  const audioPlayer = useRef();
+  // function playAudio(e) {
+  //   setAudioUrl(e);
+  // }
+  const togglePlayPause = (e) => {
     setAudioUrl(e);
-  }
+    const prevValue = isPlaying;
+    setIsPlaying(!prevValue);
+    if (!prevValue) {
+      audioPlayer.current.play();
+    } else {
+      audioPlayer.current.pause();
+    }
+  };
 
   const value = {
     audioUrl,
-    playAudio,
+    // playAudio,
+    togglePlayPause,
+    isPlaying,
+    audioPlayer,
   };
   return (
     <AudioContext.Provider value={value}>{children}</AudioContext.Provider>

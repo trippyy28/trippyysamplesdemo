@@ -5,6 +5,7 @@ import "nes.css/css/nes.min.css";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
 import { useAudio } from "../contexts/AudioContext";
+import { FaPlay } from "react-icons/fa";
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -38,7 +39,8 @@ const VIEW_ALL = "All";
 const Gallery = () => {
   const { products } = useBasket();
   const { onAdd } = useBasket();
-  const { playAudio } = useAudio();
+  const { togglePlayPause } = useAudio();
+  const { audioPlayer } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(products, "genre"));
   genres.unshift(VIEW_ALL);
@@ -74,7 +76,9 @@ const Gallery = () => {
               <img width={100} height={100} src={product.img} alt="1" />
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
-              <button onClick={() => playAudio(product.audioUrl)}>Play</button>
+              <button onClick={() => togglePlayPause(product.audioUrl)}>
+                <FaPlay />
+              </button>
               <button onClick={() => onAdd(product)} width={20}>
                 Add To Cart
               </button>

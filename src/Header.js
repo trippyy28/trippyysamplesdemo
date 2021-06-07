@@ -14,8 +14,7 @@ const HeaderMenu = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-left: 200px;
-  margin-top: 20px;
+  margin: 20px auto 0 60px;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -68,19 +67,19 @@ const Header = () => {
     <Background>
       <LeftHeaderMenu>
         <Link to="/about">
-          <img src={trippysamples} className="logo"></img>
+          <img src={trippysamples}></img>
         </Link>
       </LeftHeaderMenu>
       <HeaderMenu>
         <Link to="/about">
-          <img src={about} className="link"></img>
+          <img src={about}></img>
         </Link>
         <Link to="/">
           <img src={samplepacks}></img>
         </Link>
-        <Link to="/templets">
-          <img src={templets}></img>
-        </Link>
+        {/* <Link to="/templets">
+          <img src={templets} className="templets-logo"></img>
+        </Link> */}
       </HeaderMenu>
       <RightHeaderMenu>
         <OverlayTrigger

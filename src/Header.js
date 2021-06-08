@@ -13,8 +13,9 @@ import trippysamples from "./XD/TrippySamples.png";
 const HeaderMenu = styled.div`
   flex: 1;
   display: flex;
-  justify-content: space-between;
-  margin: 20px auto 0 60px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -75,11 +76,11 @@ const Header = () => {
           <img src={about}></img>
         </Link>
         <Link to="/">
-          <img src={samplepacks}></img>
+          <img src={samplepacks} className="samplePacksLogo"></img>
         </Link>
-        {/* <Link to="/templets">
+        <Link to="/templets">
           <img src={templets} className="templets-logo"></img>
-        </Link> */}
+        </Link>
       </HeaderMenu>
       <RightHeaderMenu>
         <OverlayTrigger

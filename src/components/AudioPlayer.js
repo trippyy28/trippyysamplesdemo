@@ -14,6 +14,19 @@ const AudioPlayer = () => {
   const { setIsPlaying } = useAudio();
   const { audioUrl } = useAudio();
 
+  useEffect(() => {
+    const seconds = Math.floor(audioPlayer.current.duration);
+    setDuration(seconds);
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
+
+  const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${returnedMinutes}:${returnedSeconds}`;
+  };
+
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
@@ -51,7 +64,10 @@ const AudioPlayer = () => {
       <div>
         <input type="range" className="progressBar" />
       </div>
-      <div className="duration">{duration}</div>
+      {/* duration */}
+      <div className="duration">
+        {duration && !isNaN(duration) && calculateTime(duration)}
+      </div>
     </div>
   );
 };

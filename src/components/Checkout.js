@@ -3,7 +3,7 @@ import { useBasket } from "../contexts/BasketContext";
 import styled from "styled-components";
 import StripeCheckoutButton from "./stripe-button/stripe";
 const Container = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
@@ -12,10 +12,9 @@ const Container = styled.div`
   text-align: center;
 `;
 const Product = styled.div`
-  border: 1px solid ${({ isExpensive }) => (isExpensive ? "blue" : "black")};
-  margin: 4px;
-  margin-left: 2px;
-  margin-right: 2px;
+  border: 1px solid;
+  margin: 0 auto 10px auto;
+  width: 50%;
   text-align: center;
 `;
 const Checkout = (props) => {

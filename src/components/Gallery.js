@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
@@ -41,7 +41,7 @@ const Gallery = () => {
   const { products } = useBasket();
   const { onAdd } = useBasket();
   const { togglePlayPauseAndAddAudio } = useAudio();
-  const { audioPlayer } = useRef();
+  const { audioPlayer } = useAudio();
   const { audioUrl } = useAudio();
   const { isPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
@@ -91,7 +91,7 @@ const Gallery = () => {
                 Add To Cart
               </button>
               <button>
-                <Link to="/details">More Info</Link>
+                <Link to={`/details/${product.id}`}>More Info</Link>
               </button>
             </Product>
           ))}

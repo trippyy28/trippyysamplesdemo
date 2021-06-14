@@ -12,6 +12,7 @@ export function AudioProvider({ children }) {
   const [currentTime, setCurrentTime] = useState(0);
   const audioPlayer = useRef();
   const progressBar = useRef();
+  const animationRef = useRef();
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -25,17 +26,40 @@ export function AudioProvider({ children }) {
     setIsPlaying(!prevValue);
     if (!prevValue) {
       audioPlayer.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioPlayer.current.pause();
+      cancelAnimationFrame(animationRef.current);
     }
   };
+
+  const whilePlaying = () => {
+    progressBar.current.value = audioPlayer.current.currentTime;
+    changePlayerCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+
   const changeRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
+    changePlayerCurrentTime();
+  };
+
+  const changePlayerCurrentTime = () => {
     progressBar.current.style.setProperty(
       "--seek-before-width",
       `${(progressBar.current.value / duration) * 100}%`
     );
     setCurrentTime(progressBar.current.value);
+  };
+
+  const backThirty = () => {
+    progressBar.current.value = Number(progressBar.current.value - 30);
+    changeRange();
+  };
+
+  const fowardThirty = () => {
+    progressBar.current.value = Number(progressBar.current.value + 30);
+    changeRange();
   };
 
   const value = {
@@ -48,6 +72,9 @@ export function AudioProvider({ children }) {
     currentTime,
     progressBar,
     changeRange,
+    whilePlaying,
+    backThirty,
+    fowardThirty,
   };
   return (
     <AudioContext.Provider value={value}>{children}</AudioContext.Provider>

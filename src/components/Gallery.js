@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
@@ -40,8 +40,8 @@ const VIEW_ALL = "All";
 const Gallery = () => {
   const { products } = useBasket();
   const { onAdd } = useBasket();
-  const { togglePlayPause } = useAudio();
-  // const { audioPlayer } = useAudio();
+  const { togglePlayPauseAndAddAudio } = useAudio();
+  const { audioPlayer } = useRef();
   const { audioUrl } = useAudio();
   const { isPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
@@ -78,7 +78,9 @@ const Gallery = () => {
               <img width={100} height={100} src={product.img} alt="1" />
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
-              <button onClick={() => togglePlayPause(product.audioUrl)}>
+              <button
+                onClick={() => togglePlayPauseAndAddAudio(product.audioUrl)}
+              >
                 {audioUrl === product.audioUrl && isPlaying ? (
                   <FaPause />
                 ) : (

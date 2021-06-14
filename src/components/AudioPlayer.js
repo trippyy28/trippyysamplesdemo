@@ -4,28 +4,19 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { BsArrowRightShort } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
-import "./audio.css";
+import styles from "./styles.module.css";
 const AudioPlayer = () => {
   // const [isPlaying, setIsPlaying] = useState("");
-  const [duration, setDuration] = useState(0);
+  // const [duration, setDuration] = useState(0);
   /*use ref */
   const { audioPlayer } = useAudio();
+  const { audioUrl } = useAudio();
   const { isPlaying } = useAudio();
   const { setIsPlaying } = useAudio();
-  const { audioUrl } = useAudio();
-
-  useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration);
-    setDuration(seconds);
-  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
-
-  const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
+  const { duration } = useAudio();
+  const { currentTime } = useAudio();
+  const { progressBar } = useAudio();
+  const { changeRange } = useAudio();
 
   const togglePlayPause = () => {
     const prevValue = isPlaying;
@@ -36,36 +27,44 @@ const AudioPlayer = () => {
       audioPlayer.current.pause();
     }
   };
+
+  const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${returnedMinutes}:${returnedSeconds}`;
+  };
+
   return (
-    <div
-      // id="audio-player-container"
-      className="audioPlayer"
-    >
-      <audio
-        ref={audioPlayer}
-        src={audioUrl}
-        // controls="play"
-        preload="metadata"
-      ></audio>
-      <button className="fowardBackward">
+    <div className={styles.audioPlayer}>
+      <audio ref={audioPlayer} src={audioUrl} preload="metadata"></audio>
+      <button className={styles.fowardBackward}>
         30
         <BsArrowLeftShort />
       </button>
-      <button onClick={togglePlayPause} className="playPause">
-        {isPlaying ? <FaPause /> : <FaPlay className="play" />}
+
+      <button onClick={togglePlayPause} className={styles.playPause}>
+        {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
       </button>
       {/*current time*/}
-      <button className="fowardBackward">
+      <button className={styles.fowardBackward}>
         30
         <BsArrowRightShort />
       </button>
-      <div className="currentTime">0:00</div>
+      <div className={styles.divProgressBar}>{calculateTime(currentTime)}</div>
       {/*progress bar*/}
       <div>
-        <input type="range" className="progressBar" />
+        <input
+          type="range"
+          className={styles.progressBar}
+          defaultValue="0"
+          ref={progressBar}
+          onChange={changeRange}
+        />
       </div>
       {/* duration */}
-      <div className="duration">
+      <div className={styles.duration}>
         {duration && !isNaN(duration) && calculateTime(duration)}
       </div>
     </div>

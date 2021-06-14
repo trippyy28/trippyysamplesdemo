@@ -12,7 +12,7 @@
 
 .rightSection {
   color: white;
-  margin-top: 20px;
+  margin: 30px 0 0 0;
   font-size: 20px;
 }
 
@@ -22,6 +22,8 @@
 
 iframe {
   margin-top: 50px;
+  width: 600px;
+  height: 600px;
 }
 .samplePacksLogo {
   margin-top: 29px;

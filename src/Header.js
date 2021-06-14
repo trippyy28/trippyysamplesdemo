@@ -15,7 +15,7 @@ const HeaderMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 0 0;
+  margin: 0 -150px;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -31,7 +31,6 @@ const RightHeaderMenu = styled.div`
 `;
 const LeftHeaderMenu = styled.div`
   text-align: left;
-  margin-left: 10px;
   margin-top: 10px;
 `;
 
@@ -66,11 +65,11 @@ const Header = () => {
   }
   return (
     <Background>
-      <LeftHeaderMenu>
+      {/* <LeftHeaderMenu>
         <Link to="/about">
           <img src={trippysamples}></img>
         </Link>
-      </LeftHeaderMenu>
+      </LeftHeaderMenu> */}
       <HeaderMenu>
         <Link to="/about">
           <img src={about}></img>

@@ -17,8 +17,6 @@ const AudioPlayer = () => {
   const { currentTime } = useAudio();
   const { progressBar } = useAudio();
   const { changeRange } = useAudio();
-  const { backThirty } = useAudio();
-  const { fowardThirty } = useAudio();
 
   const togglePlayPause = () => {
     const prevValue = isPlaying;
@@ -41,19 +39,12 @@ const AudioPlayer = () => {
   return (
     <div className={styles.audioPlayer}>
       <audio ref={audioPlayer} src={audioUrl} preload="metadata"></audio>
-      <button className={styles.fowardBackward} onClick={backThirty}>
-        30
-        <BsArrowLeftShort />
-      </button>
 
       <button onClick={togglePlayPause} className={styles.playPause}>
         {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
       </button>
       {/*current time*/}
-      <button className={styles.fowardBackward} onClick={fowardThirty}>
-        30
-        <BsArrowRightShort />
-      </button>
+
       <div className={styles.divProgressBar}>{calculateTime(currentTime)}</div>
       {/*progress bar*/}
       <div>
@@ -67,7 +58,7 @@ const AudioPlayer = () => {
       </div>
       {/* duration */}
       <div className={styles.duration}>
-        {duration && !isNaN(duration) && calculateTime(duration)}
+        {!isNaN(duration) && calculateTime(duration)}
       </div>
     </div>
   );

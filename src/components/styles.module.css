@@ -1,11 +1,12 @@
 .audioPlayer {
-  --primary: #f40082;
-  --secondery: #ffd200;
+  --primary: #3bb2d6;
+  --secondery: #ffe882;
   display: flex;
   width: 430px;
   align-items: center;
+  justify-content: center;
   margin: 20px auto 0 auto;
-  background-color: aqua;
+  background-color: rgb(142, 182, 165);
 }
 .fowardBackward {
   background: none;
@@ -46,7 +47,7 @@
 .divProgressBar {
   font-size: 16px;
   font-family: monospace;
-  margin-left: 5px;
+  margin-left: 7px;
 }
 .progressBar {
   --bar-bg: #ffe3d4;
@@ -151,4 +152,10 @@
 .progressBar:active::-moz-range-thumb {
   transform: scale(1.2);
   background: var(--selectedKnobby);
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .audioPlayer {
+    width: 98%;
+  }
 }

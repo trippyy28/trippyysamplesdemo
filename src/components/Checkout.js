@@ -1,7 +1,7 @@
 import React from "react";
 import { useBasket } from "../contexts/BasketContext";
 import styled from "styled-components";
-import StripeCheckoutButton from "./stripe-button/stripe";
+// import StripeCheckoutButton from "./stripe-button/stripe";
 const Container = styled.div`
   /* border: 2px solid black; */
   padding: 10px;
@@ -36,7 +36,7 @@ const Checkout = (props) => {
           </Product>
         </div>
       ))}
-      <StripeCheckoutButton price={totalPrice} />
+      {/* <StripeCheckoutButton price={totalPrice} /> */}
     </Container>
   );
 };

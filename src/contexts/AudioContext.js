@@ -20,8 +20,8 @@ export function AudioProvider({ children }) {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  const togglePlayPauseAndAddAudio = (e) => {
-    setAudioUrl(e);
+  async function togglePlayPauseAndAddAudio(e) {
+    await setAudioUrl(e);
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
@@ -31,7 +31,7 @@ export function AudioProvider({ children }) {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  };
+  }
 
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
@@ -52,16 +52,6 @@ export function AudioProvider({ children }) {
     setCurrentTime(progressBar.current.value);
   };
 
-  const backThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value - 30);
-    changeRange();
-  };
-
-  const fowardThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value + 30);
-    changeRange();
-  };
-
   const value = {
     audioUrl,
     togglePlayPauseAndAddAudio,
@@ -73,8 +63,6 @@ export function AudioProvider({ children }) {
     progressBar,
     changeRange,
     whilePlaying,
-    backThirty,
-    fowardThirty,
   };
   return (
     <AudioContext.Provider value={value}>{children}</AudioContext.Provider>

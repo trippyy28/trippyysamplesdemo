@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
+import Details from "./Details";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
 import { useAudio } from "../contexts/AudioContext";

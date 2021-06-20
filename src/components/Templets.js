@@ -70,15 +70,7 @@ const Templets = () => {
               <div>{product.title}</div>
               <div>{product.price}$</div>
               <img width={100} height={100} src={product.img} alt="1" />
-              {/* <audio src={product.audioUrl} controls="Play" /> */}
-
-              <button onClick={() => playAudio(product.audioUrl)}>Play</button>
-              <button onClick={() => onAdd(product)} width={20}>
-                Add To Cart
-              </button>
-              <button>
-                <Link to="/details">More Info</Link>
-              </button>
+              <h4>coming soon!</h4>
             </Product>
           ))}
       </Grid>

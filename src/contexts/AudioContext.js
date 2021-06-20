@@ -23,7 +23,7 @@ export function AudioProvider({ children }) {
   async function togglePlayPauseAndAddAudio(e) {
     await setAudioUrl(e);
     const prevValue = isPlaying;
-    setIsPlaying(!prevValue);
+    await setIsPlaying(!prevValue);
     if (!prevValue) {
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);

@@ -34,9 +34,9 @@ function App() {
                 <Route exact path="/templets">
                   <Templets />
                 </Route>
-                <Route exact path="/details/:id">
+                {/* <Route exact path="/details/:id">
                   <Details />
-                </Route>
+                </Route> */}
                 <Route exact path="/login">
                   <Login />
                 </Route>

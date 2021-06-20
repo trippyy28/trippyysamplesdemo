@@ -8,6 +8,7 @@ import { useBasket } from "./contexts/BasketContext";
 import templets from "./XD/Templets.png";
 import samplepacks from "./XD/Samples.png";
 import about from "./XD/About.png";
+import { GrBasket } from "react-icons/gr";
 import trippysamples from "./XD/TrippySamples.png";
 
 const HeaderMenu = styled.div`
@@ -15,7 +16,7 @@ const HeaderMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 -150px;
+
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;

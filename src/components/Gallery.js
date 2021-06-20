@@ -25,6 +25,8 @@ const Product = styled.div`
 const FiltersContainer = styled.div`
   background-color: #576ca8;
   padding: 4px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
 `;
 
 const Grid = styled.div`
@@ -52,6 +54,7 @@ const Gallery = () => {
     <Container>
       <FiltersContainer>
         <select
+          className="select"
           onChange={(e) => setGenre(e.target.value)}
           onBlur={(e) => setGenre(e.target.value)}
         >

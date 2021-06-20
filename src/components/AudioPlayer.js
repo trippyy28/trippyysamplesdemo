@@ -18,7 +18,7 @@ const AudioPlayer = () => {
   const { progressBar } = useAudio();
   const { changeRange } = useAudio();
 
-  const togglePlayPause = () => {
+  function togglePlayPause() {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
@@ -26,7 +26,7 @@ const AudioPlayer = () => {
     } else {
       audioPlayer.current.pause();
     }
-  };
+  }
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -58,7 +58,9 @@ const AudioPlayer = () => {
       </div>
       {/* duration */}
       <div className={styles.duration}>
-        {!isNaN(duration) && calculateTime(duration)}
+        {!isPlaying && audioUrl
+          ? "00:00"
+          : !isNaN(duration) && calculateTime(duration)}
       </div>
     </div>
   );

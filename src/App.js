@@ -15,6 +15,7 @@ import { BasketProvider } from "./contexts/BasketContext";
 import { AudioProvider } from "./contexts/AudioContext";
 import Checkout from "./components/Checkout";
 import AudioPlayer from "./components/AudioPlayer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             </div>
           </BrowserRouter>
           <AudioPlayer />
+          <Footer />
         </AudioProvider>
       </BasketProvider>
     </AuthProvider>

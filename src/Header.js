@@ -9,7 +9,7 @@ import templets from "./XD/Templets.png";
 import samplepacks from "./XD/Samples.png";
 import about from "./XD/About.png";
 import { GrBasket } from "react-icons/gr";
-import trippysamples from "./XD/TrippySamples.png";
+import trippysamples from "./images 2.jpg";
 
 const HeaderMenu = styled.div`
   flex: 1;
@@ -72,6 +72,7 @@ const Header = () => {
         </Link>
       </LeftHeaderMenu> */}
       <HeaderMenu>
+        <img src={trippysamples} width={80} className="myLogo"></img>
         <Link to="/about">
           <img src={about}></img>
         </Link>

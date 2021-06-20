@@ -49,6 +49,7 @@ export function BasketProvider({ children }) {
     itemsPrice,
     totalPrice,
     templets,
+    setCartItems,
   };
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>

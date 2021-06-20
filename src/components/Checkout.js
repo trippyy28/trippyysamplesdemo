@@ -38,7 +38,9 @@ const Checkout = (props) => {
         </div>
       ))}
       {/* <StripeCheckoutButton price={totalPrice} /> */}
-      <Paypal price={totalPrice} />
+      <div className="paypal">
+        <Paypal />
+      </div>
     </Container>
   );
 };

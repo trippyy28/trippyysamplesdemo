@@ -3,7 +3,7 @@ import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
 import Details from "./Details";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
 import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
@@ -94,6 +94,9 @@ const Gallery = () => {
               <button onClick={() => onAdd(product)} width={20}>
                 Add To Cart
               </button>
+              <Route exact path="/details">
+                <Details />
+              </Route>
               <button>
                 <Link to={`/details/${product.id}`}>More Info</Link>
               </button>

@@ -35,9 +35,6 @@ function App() {
                 <Route exact path="/templets">
                   <Templets />
                 </Route>
-                {/* <Route exact path="/details/:id">
-                  <Details />
-                </Route> */}
                 <Route exact path="/login">
                   <Login />
                 </Route>
@@ -49,6 +46,9 @@ function App() {
                 </Route>
                 <Route exact path="/signup">
                   <Signup />
+                </Route>
+                <Route path="/details/:id">
+                  <Details />
                 </Route>
               </Switch>
             </div>

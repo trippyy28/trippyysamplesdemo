@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/trippyysamplesdemo/static/css/main.c1c2b266.chunk.css",
-    "main.js": "/trippyysamplesdemo/static/js/main.083bca94.chunk.js",
-    "main.js.map": "/trippyysamplesdemo/static/js/main.083bca94.chunk.js.map",
-    "runtime-main.js": "/trippyysamplesdemo/static/js/runtime-main.b5583e47.js",
-    "runtime-main.js.map": "/trippyysamplesdemo/static/js/runtime-main.b5583e47.js.map",
+    "main.js": "/trippyysamplesdemo/static/js/main.c87a7bd8.chunk.js",
+    "main.js.map": "/trippyysamplesdemo/static/js/main.c87a7bd8.chunk.js.map",
+    "runtime-main.js": "/trippyysamplesdemo/static/js/runtime-main.38bcdba3.js",
+    "runtime-main.js.map": "/trippyysamplesdemo/static/js/runtime-main.38bcdba3.js.map",
     "static/css/2.3c2d599a.chunk.css": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css",
-    "static/js/2.97bce1d7.chunk.js": "/trippyysamplesdemo/static/js/2.97bce1d7.chunk.js",
-    "static/js/2.97bce1d7.chunk.js.map": "/trippyysamplesdemo/static/js/2.97bce1d7.chunk.js.map",
-    "static/js/3.bb51c623.chunk.js": "/trippyysamplesdemo/static/js/3.bb51c623.chunk.js",
-    "static/js/3.bb51c623.chunk.js.map": "/trippyysamplesdemo/static/js/3.bb51c623.chunk.js.map",
+    "static/js/2.b5eeac8e.chunk.js": "/trippyysamplesdemo/static/js/2.b5eeac8e.chunk.js",
+    "static/js/2.b5eeac8e.chunk.js.map": "/trippyysamplesdemo/static/js/2.b5eeac8e.chunk.js.map",
+    "static/js/3.d99351aa.chunk.js": "/trippyysamplesdemo/static/js/3.d99351aa.chunk.js",
+    "static/js/3.d99351aa.chunk.js.map": "/trippyysamplesdemo/static/js/3.d99351aa.chunk.js.map",
     "index.html": "/trippyysamplesdemo/index.html",
     "static/css/2.3c2d599a.chunk.css.map": "/trippyysamplesdemo/static/css/2.3c2d599a.chunk.css.map",
     "static/css/main.c1c2b266.chunk.css.map": "/trippyysamplesdemo/static/css/main.c1c2b266.chunk.css.map",
-    "static/js/2.97bce1d7.chunk.js.LICENSE.txt": "/trippyysamplesdemo/static/js/2.97bce1d7.chunk.js.LICENSE.txt",
+    "static/js/2.b5eeac8e.chunk.js.LICENSE.txt": "/trippyysamplesdemo/static/js/2.b5eeac8e.chunk.js.LICENSE.txt",
     "static/media/images 2.696d2d85.jpg": "/trippyysamplesdemo/static/media/images 2.696d2d85.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b5583e47.js",
+    "static/js/runtime-main.38bcdba3.js",
     "static/css/2.3c2d599a.chunk.css",
-    "static/js/2.97bce1d7.chunk.js",
+    "static/js/2.b5eeac8e.chunk.js",
     "static/css/main.c1c2b266.chunk.css",
-    "static/js/main.083bca94.chunk.js"
+    "static/js/main.c87a7bd8.chunk.js"
   ]
 }

@@ -22,6 +22,7 @@ const Checkout = (props) => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
+  const { localStorageArray } = useBasket();
   return (
     <Container>
       <h2>Your Price is:{totalPrice}$</h2>

@@ -22,6 +22,8 @@ const Basket = () => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
+  // const localStorageArray = localStorage.getItem("products");
+
   return (
     <Container>
       <h2>Cart Items</h2>

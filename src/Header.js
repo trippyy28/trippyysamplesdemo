@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import Basket from "./components/Basket";
-import { useAuth } from "./contexts/AuthContext";
+// import { useAuth } from "./contexts/AuthContext";
 import { useBasket } from "./contexts/BasketContext";
 import templets from "./XD/Templets.png";
 import samplepacks from "./XD/Samples.png";
@@ -50,20 +50,20 @@ const Background = styled.div`
 
 const Header = () => {
   const [error, setError] = useState("");
-  const { currentUser } = useAuth();
-  const { logout } = useAuth();
+  // const { currentUser } = useAuth();
+  // const { logout } = useAuth();
   const { cartItems } = useBasket();
   const history = useHistory();
 
-  async function handleLogout() {
-    setError("");
-    try {
-      await logout();
-      history.push("/");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
+  // async function handleLogout() {
+  //   setError("");
+  //   try {
+  //     await logout();
+  //     history.push("/");
+  //   } catch {
+  //     setError("Failed to log out");
+  //   }
+  // }
   return (
     <Background>
       {/* <LeftHeaderMenu>
@@ -102,15 +102,14 @@ const Header = () => {
       </RightHeaderMenu>
 
       {error && <Alert variant="danger">{error}</Alert>}
-      {currentUser ? (
+      {/* {currentUser ? (
         <h3 className="rightSection login" onClick={handleLogout}>
           Logout
         </h3>
-      ) : (
-        <Link to="/login">
-          <h3 className="rightSection login">Login</h3>
-        </Link>
-      )}
+      ) : ( */}
+      <Link to="/login">
+        <h3 className="rightSection login">Login</h3>
+      </Link>
     </Background>
   );
 };

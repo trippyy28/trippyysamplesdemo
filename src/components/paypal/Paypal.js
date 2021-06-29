@@ -8,6 +8,7 @@ function Paypal() {
   const { cartItems } = useBasket();
   const { setCartItems } = useBasket();
   const paypalRef = useRef();
+  let purchasedItem = cartItems;
 
   useEffect(() => {
     window.paypal
@@ -40,17 +41,19 @@ function Paypal() {
 
   if (paidFor) {
     return (
-      <div>
-        Congrats, you just bought
-        {cartItems.map((item) => (
-          <div key={item.id} className="after-buy">
-            <div>{item.title}</div>
-            <img src={item.img} width={100} height={100} alt={item.id} />
-            <div>Link</div>
-            <a href={item.audioUrl}>download</a>
-          </div>
-        ))}
-      </div>
+      (
+        <div>
+          Congrats, you just bought
+          {purchasedItem.map((item) => (
+            <div key={item.id} className="after-buy">
+              <div>{item.title}</div>
+              <img src={item.img} width={100} height={100} alt={item.id} />
+              <div>Link</div>
+              <a href={item.audioUrl}>download</a>
+            </div>
+          ))}
+        </div>
+      ) && setCartItems([])
     );
   }
 

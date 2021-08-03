@@ -12,10 +12,9 @@ export function useBasket() {
 }
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
-  // let [productsData, setProudctsData] = useState([]);
   const products = data;
-  const localStorageArray = [localStorage.getItem("products")];
-  const isLocalStorageTrue = [localStorage.getItem("products")].length > 0;
+
+  //fetching data from firebase
   // useEffect(() => {
   //   try {
   //     const fetchData = async () => {
@@ -27,21 +26,28 @@ export function BasketProvider({ children }) {
   //     };
   //     fetchData();
   //   } catch {
-  //     console.error("error");ddsf
-  //   }D
+  //     console.error("error");
+  //   }
   // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("products", JSON.stringify(cartItems));
+  // }, [cartItems]);
 
   const templets = templetsData;
   const onAdd = (product) => {
     const cartItem = cartItems.find((x) => x.id === product.id);
     if (cartItem) {
       setCartItems(
-        cartItems.map((x) => (x.id === product.id ? { ...cartItem } : x))
+        cartItems.map(
+          (x) => (x.id === product.id ? { ...cartItem } : x)
+          //add it to the code after ...cartItem if you want the user to add more products on each item:
+          //, qty: cartItem.qty + 1
+        )
       );
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
-    localStorage.setItem("products", JSON.stringify(cartItems));
   };
 
   const onRemove = (product) => {
@@ -55,7 +61,6 @@ export function BasketProvider({ children }) {
         )
       );
     }
-    localStorage.removeItem("products");
   };
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalPrice = itemsPrice;
@@ -69,7 +74,6 @@ export function BasketProvider({ children }) {
     totalPrice,
     templets,
     setCartItems,
-    localStorageArray,
   };
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>

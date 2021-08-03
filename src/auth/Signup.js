@@ -1,59 +1,107 @@
-import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-// import { useAuth } from "../contexts/AuthContext";
-import firebase from "firebase/app";
-import "firebase/firestore";
+import React, { useRef, useState, useContext } from "react";
 
+import { Link, useHistory } from "react-router-dom";
+import FirebaseContext from "../contexts/firebase";
+import { doesUserNameExist } from "../services/firebase";
 const Signup = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  // const { signup } = useAuth();
+  const { firebase } = useContext(FirebaseContext);
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
+  const history = useHistory();
+  const isInvalid = password === "" || emailAddress === "";
 
-  //   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-  //     return setError("Passwords do not match");
-  //   }
+  const handleSignUp = async (event) => {
+    event.preventDefault();
 
-  //   try {
-  //     setError("");
-  //     setLoading(true);
-  //     await signup(emailRef.current.value, passwordRef.current.value);
-  //     //history.push("/");//
-  //   } catch {
-  //     setError("Failed to create an account");
-  //   }
+    const usernameExists = await doesUserNameExist(username);
+    if (!usernameExists.length) {
+      try {
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(emailAddress, password);
 
-  //   setLoading(false);
-  // }
+        await createdUserResult.user.updateProfile({
+          displayName: username,
+        });
+
+        await firebase.firestore().collection("users").add({
+          userId: createdUserResult.user.uid,
+          username: username.toLowerCase(),
+          fullName,
+          emailAddress: emailAddress.toLowerCase(),
+          following: [],
+          followers: [],
+          dateCreated: Date.now(),
+        });
+        history.push("/");
+        // we have to do a redirect to the dashboard
+      } catch (error) {
+        setFullName("");
+        setError(error.message);
+      }
+    } else {
+      setUsername("");
+      setFullName("");
+      setEmailAddress("");
+      setPassword("");
+      setError("That username is already taken, please try another!");
+    }
+  };
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button className="w-100" type="submit" disabled={loading}>
-              Sign-Up
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+      <div className="">
+        <div className="">
+          <div className="">
+            {error && <p className="">{error}</p>}
+
+            <form method="POST" onSubmit={handleSignUp}>
+              <input
+                value={username}
+                onChange={({ target }) =>
+                  setUsername(target.value.toLowerCase())
+                }
+                aria-label="Enter your username"
+                className=""
+                type="text"
+                placeholder="Username"
+              />
+              <input
+                value={fullName}
+                onChange={({ target }) => setFullName(target.value)}
+                aria-label="Enter your full name"
+                className=""
+                type="text"
+                placeholder="Full name"
+              />
+              <input
+                value={emailAddress}
+                onChange={({ target }) => setEmailAddress(target.value)}
+                aria-label="Enter your email address"
+                className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
+                type="text"
+                placeholder="Email address"
+              />
+              <input
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+                aria-label="Enter your password"
+                className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
+                type="password"
+                placeholder="Password"
+              />
+              <button disabled={isInvalid} type="submit" className="">
+                Sign UP
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="w-100 text-center mt-2">
+        Need an account? <Link to="/signup">Sign Up</Link>
+      </div>
     </>
   );
 };

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import Basket from "./components/Basket";
-// import { useAuth } from "./contexts/AuthContext";
+import FirebaseContext from "./contexts/firebase";
+import UserContext from "./contexts/user";
 import { useBasket } from "./contexts/BasketContext";
 import templets from "./XD/Templets.png";
 import samplepacks from "./XD/Samples.png";
@@ -54,16 +55,9 @@ const Header = () => {
   // const { logout } = useAuth();
   const { cartItems } = useBasket();
   const history = useHistory();
-
-  // async function handleLogout() {
-  //   setError("");
-  //   try {
-  //     await logout();
-  //     history.push("/");
-  //   } catch {
-  //     setError("Failed to log out");
-  //   }
-  // }
+  const { firebase } = useContext(FirebaseContext);
+  const { user } = useContext(UserContext);
+  console.log(user.displayName);
   return (
     <Background>
       {/* <LeftHeaderMenu>
@@ -102,14 +96,18 @@ const Header = () => {
       </RightHeaderMenu>
 
       {error && <Alert variant="danger">{error}</Alert>}
-      {/* {currentUser ? (
-        <h3 className="rightSection login" onClick={handleLogout}>
+      {user ? (
+        <h3
+          className="rightSection login"
+          onClick={() => firebase.auth().signOut()}
+        >
           Logout
         </h3>
-      ) : ( */}
-      <Link to="/login">
-        <h3 className="rightSection login">Login</h3>
-      </Link>
+      ) : (
+        <Link to="/login">
+          <h3 className="rightSection login">Login</h3>
+        </Link>
+      )}
     </Background>
   );
 };

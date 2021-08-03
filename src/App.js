@@ -15,46 +15,51 @@ import { AudioProvider } from "./contexts/AudioContext";
 import Checkout from "./components/Checkout";
 import AudioPlayer from "./components/AudioPlayer";
 import Footer from "./components/Footer";
+import UserContext from "./contexts/user";
+import useAuthListener from "./hooks/user-auth-listener";
 
 function App() {
+  const { user } = useAuthListener();
   return (
-    <BasketProvider>
-      <AudioProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Gallery />
-              </Route>
-              <Route exact path="/about">
-                <HomePage />
-              </Route>
-              <Route exact path="/templets">
-                <Templets />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/checkout">
-                <Checkout />
-              </Route>
-              <Route exact path="/basket">
-                <Basket />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route path="/details/:id">
-                <Details />
-              </Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
-        <AudioPlayer />
-        <Footer />
-      </AudioProvider>
-    </BasketProvider>
+    <UserContext.Provider value={{ user }}>
+      <BasketProvider>
+        <AudioProvider>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <div className="App">
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Gallery />
+                </Route>
+                <Route exact path="/about">
+                  <HomePage />
+                </Route>
+                <Route exact path="/templets">
+                  <Templets />
+                </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <Route exact path="/checkout">
+                  <Checkout />
+                </Route>
+                <Route exact path="/basket">
+                  <Basket />
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />
+                </Route>
+                <Route path="/details/:id">
+                  <Details />
+                </Route>
+              </Switch>
+            </div>
+          </BrowserRouter>
+          <AudioPlayer />
+          <Footer />
+        </AudioProvider>
+      </BasketProvider>
+    </UserContext.Provider>
   );
 }
 

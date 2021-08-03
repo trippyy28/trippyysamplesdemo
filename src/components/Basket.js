@@ -22,6 +22,7 @@ const Basket = () => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
+  // let { localStorageArray } = useBasket();
   // const localStorageArray = localStorage.getItem("products");
 
   return (
@@ -35,7 +36,6 @@ const Basket = () => {
             <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />
             <div>{item.price}$</div>
-            <div>{item.qty}</div>
             <button onClick={() => onRemove(item)}>Remove</button>
           </Product>
         </div>

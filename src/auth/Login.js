@@ -1,35 +1,58 @@
-import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import React, { useRef, useState, useContext } from "react";
+
 import { Link, useHistory } from "react-router-dom";
+import FirebaseContext from "../contexts/firebase";
 
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const { firebase } = useContext(FirebaseContext);
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const isInvalid = password === "" || emailAddress === "";
 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      history.push("/");
+    } catch (error) {
+      setEmailAddress("");
+      setPassword("");
+      setError(error.message);
+    }
+  };
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Button className="w-100" type="submit" disabled={loading}>
-              Log In
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+      <div className="">
+        <div className="">
+          <div className="">
+            {error && <p className="">{error}</p>}
+
+            <form method="POST" onSubmit={handleLogin}>
+              <input
+                value={emailAddress}
+                onChange={({ target }) => setEmailAddress(target.value)}
+                aria-label="Enter your email address"
+                className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
+                type="text"
+                placeholder="Email address"
+              />
+              <input
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+                aria-label="Enter your password"
+                className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
+                type="password"
+                placeholder="Password"
+              />
+              <button disabled={isInvalid} type="submit" className="">
+                Log In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>

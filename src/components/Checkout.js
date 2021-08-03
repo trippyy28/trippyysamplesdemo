@@ -1,7 +1,7 @@
 import React from "react";
 import { useBasket } from "../contexts/BasketContext";
 import styled from "styled-components";
-import StripeCheckoutButton from "./stripe-button/stripe";
+// import StripeCheckoutButton from "./stripe-button/stripe";
 import Paypal from "./paypal/Paypal";
 const Container = styled.div`
   /* border: 2px solid black; */
@@ -22,7 +22,7 @@ const Checkout = (props) => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
-  const { localStorageArray } = useBasket();
+  // const { localStorageArray } = useBasket();
   return (
     <Container>
       <h2>Your Price is:{totalPrice}$</h2>
@@ -33,7 +33,6 @@ const Checkout = (props) => {
             <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />
             <div>{item.price}$</div>
-            <div>{item.qty}</div>
             <button onClick={() => onRemove(item)}>Remove</button>
           </Product>
         </div>

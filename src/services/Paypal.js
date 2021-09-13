@@ -5,7 +5,7 @@ function Paypal() {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
   const { totalPrice } = useBasket();
-  const { products } = useBasket();
+  const { cartItems } = useBasket();
   const paypalRef = useRef();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function Paypal() {
           return actions.order.create({
             purchase_units: [
               {
-                description: products.item,
+                description: cartItems.item,
                 amount: {
                   currency_code: "USD",
                   value: totalPrice,
@@ -35,13 +35,13 @@ function Paypal() {
         },
       })
       .render(paypalRef.current);
-  }, [products.item, products.price, totalPrice]);
+  }, [cartItems.item, cartItems.price, totalPrice]);
 
   if (paidFor) {
     return (
       <div>
         Congrats, you just bought
-        {products.map((item) => (
+        {cartItems.map((item) => (
           <div key={item.id} className="after-buy">
             <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />

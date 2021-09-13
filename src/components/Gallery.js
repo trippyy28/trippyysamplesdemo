@@ -41,14 +41,13 @@ const Grid = styled.div`
 const VIEW_ALL = "All";
 
 const Gallery = () => {
-  const { products } = useBasket();
+  const { productsData } = useBasket();
   const { onAdd } = useBasket();
   const { togglePlayPauseAndAddAudio } = useAudio();
-  const { audioPlayer } = useAudio();
   const { audioUrl } = useAudio();
   const { isPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
-  const genres = _.uniq(_.map(products, "genre"));
+  const genres = _.uniq(_.map(productsData, "genre"));
   genres.unshift(VIEW_ALL);
   return (
     <Container>
@@ -64,7 +63,7 @@ const Gallery = () => {
         </select>
       </FiltersContainer>
       <Grid>
-        {products
+        {productsData
           .filter(
             ({ genre }) => selectedGenre === VIEW_ALL || genre === selectedGenre
           )

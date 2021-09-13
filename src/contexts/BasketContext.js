@@ -2,8 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { data } from "../data/data";
 import { templetsData } from "../data/templetsdata";
-
-// import firestore from "firebase/firestore";
+import {firebase} from "../lib/firebase";
+import firestore from "firebase";
 
 const BasketContext = React.createContext();
 
@@ -12,23 +12,23 @@ export function useBasket() {
 }
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
-  const products = data;
+  let [productsData,setProudctsData] =useState([])
 
   //fetching data from firebase
-  // useEffect(() => {
-  //   try {
-  //     const fetchData = async () => {
-  //       const db = app.firestore();
-  //       const data = await db.collection("products").get();
-  //       setProudctsData(
-  //         data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     };
-  //     fetchData();
-  //   } catch {
-  //     console.error("error");
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const db = firebase.firestore();
+        const data = await db.collection("products").get();
+        setProudctsData(
+          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
+      };
+      fetchData();
+    } catch {
+      console.error("error");
+    }
+  }, []);
 
   // useEffect(() => {
   //   localStorage.setItem("products", JSON.stringify(cartItems));
@@ -67,13 +67,13 @@ export function BasketProvider({ children }) {
 
   const value = {
     cartItems,
-    products,
     onAdd,
     onRemove,
     itemsPrice,
     totalPrice,
     templets,
     setCartItems,
+    productsData
   };
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>

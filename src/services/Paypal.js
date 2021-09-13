@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useBasket } from "../../contexts/BasketContext";
+import { useBasket } from "../contexts/BasketContext";
 
 function Paypal() {
   const [paidFor, setPaidFor] = useState(false);

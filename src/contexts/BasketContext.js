@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { data } from "../../src/data";
-import { templetsData } from "../../src/templetsdata";
+import { data } from "../data/data";
+import { templetsData } from "../data/templetsdata";
 
 // import firestore from "firebase/firestore";
 

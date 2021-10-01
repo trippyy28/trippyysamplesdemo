@@ -22,6 +22,7 @@ const Checkout = (props) => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
+ 
   // const { localStorageArray } = useBasket();
   return (
     <Container>
@@ -39,7 +40,7 @@ const Checkout = (props) => {
       ))}
       {/* <StripeCheckoutButton price={totalPrice} /> */}
       <div className="paypal">
-        <Paypal />
+        <Paypal cartItems={cartItems}/>
       </div>
     </Container>
   );

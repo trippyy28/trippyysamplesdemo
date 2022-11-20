@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: center;
   margin: 20px auto 0 auto;
-  background-color: rgb(142, 182, 165);
+  background-color: rgb(142, 151, 182);
+  border-radius: 25px;
 }
 .fowardBackward {
   background: none;

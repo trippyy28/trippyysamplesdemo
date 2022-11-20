@@ -9,8 +9,9 @@ import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 const Container = styled.div`
-  border: 2px solid black;
+  border: 1px solid black;
   padding: 10px;
+  border-radius: 25px;
 `;
 
 const Product = styled.div`
@@ -19,11 +20,14 @@ const Product = styled.div`
   align-items: center;
   flex-direction: column;
   border: 1px solid;
+  border-radius: 25px;
+  box-shadow: 5px 5px lightblue;
   margin: 2px;
 `;
 
 const FiltersContainer = styled.div`
   background-color: #576ca8;
+  border-radius: 25px;
   padding: 4px;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
@@ -76,12 +80,13 @@ const Gallery = () => {
               img={product.img}
               audioUrl={product.audioUrl}
             >
-              <div>{product.title}</div>
-              <div>{product.price}$</div>
+              <div className="product-title">{product.title}</div>
+              <div className="product-price">{product.price}$</div>
               <img width={100} height={100} src={product.img} alt="1" />
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
               <button
+                className="button-play"
                 onClick={() => togglePlayPauseAndAddAudio(product.audioUrl)}
               >
                 {audioUrl === product.audioUrl && isPlaying ? (
@@ -90,13 +95,17 @@ const Gallery = () => {
                   <FaPlay />
                 )}
               </button>
-              <button onClick={() => onAdd(product)} width={20}>
+              <button
+                className="button-add"
+                onClick={() => onAdd(product)}
+                width={20}
+              >
                 Add To Cart
               </button>
               <Route exact path="/details">
                 <Details />
               </Route>
-              <button>
+              <button className="button-info">
                 <Link to={`/details/${product.id}`}>More Info</Link>
               </button>
             </Product>

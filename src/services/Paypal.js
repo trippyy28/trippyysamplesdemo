@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useBasket } from "../contexts/BasketContext";
+import { doc, setDoc } from "firebase/firestore";
 
-function Paypal({cartItems}) {
+function Paypal({ cartItems }) {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
   const { totalPrice } = useBasket();
-  const { setCartItems } =useBasket();
-  let array1 = [];
-  let cartItemsNewArray = array1.concat(cartItems);
+  const { setCartItems } = useBasket();
   const paypalRef = useRef();
-  console.log(cartItems)
-
+  let array1 = [];
+  let cartItemsNewArray = [];
+  cartItemsNewArray.push([cartItems]);
 
   useEffect(() => {
     window.paypal

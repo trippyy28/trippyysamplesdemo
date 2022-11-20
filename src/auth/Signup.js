@@ -6,7 +6,6 @@ import { doesUserNameExist } from "../services/firebase";
 const Signup = () => {
   const { firebase } = useContext(FirebaseContext);
   const [username, setUsername] = useState("");
-  const [fullName, setFullName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,21 +29,16 @@ const Signup = () => {
         await firebase.firestore().collection("users").add({
           userId: createdUserResult.user.uid,
           username: username.toLowerCase(),
-          fullName,
           emailAddress: emailAddress.toLowerCase(),
-          following: [],
-          followers: [],
           dateCreated: Date.now(),
         });
         history.push("/");
         // we have to do a redirect to the dashboard
       } catch (error) {
-        setFullName("");
         setError(error.message);
       }
     } else {
       setUsername("");
-      setFullName("");
       setEmailAddress("");
       setPassword("");
       setError("That username is already taken, please try another!");
@@ -68,14 +62,7 @@ const Signup = () => {
                 type="text"
                 placeholder="Username"
               />
-              <input
-                value={fullName}
-                onChange={({ target }) => setFullName(target.value)}
-                aria-label="Enter your full name"
-                className=""
-                type="text"
-                placeholder="Full name"
-              />
+
               <input
                 value={emailAddress}
                 onChange={({ target }) => setEmailAddress(target.value)}
@@ -98,9 +85,6 @@ const Signup = () => {
             </form>
           </div>
         </div>
-      </div>
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
       </div>
     </>
   );

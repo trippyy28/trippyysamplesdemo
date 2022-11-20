@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
+import UserContext from "../contexts/user";
+
 const Container = styled.div`
   border: 2px solid black;
   padding: 10px;
@@ -22,6 +24,7 @@ const Basket = () => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
+  const { user } = useContext(UserContext);
   // let { localStorageArray } = useBasket();
   // const localStorageArray = localStorage.getItem("products");
 
@@ -36,7 +39,9 @@ const Basket = () => {
             <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />
             <div>{item.price}$</div>
-            <button onClick={() => onRemove(item)}>Remove</button>
+            <button className="button-remove" onClick={() => onRemove(item)}>
+              Remove
+            </button>
           </Product>
         </div>
       ))}

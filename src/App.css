@@ -10,12 +10,6 @@
   font-family: "Press Start 2P", cursive;
 }
 
-.rightSection {
-  color: white;
-  margin: 30px 0 0 0;
-  font-size: 20px;
-}
-
 .login {
   margin-right: 4px;
 }
@@ -55,6 +49,46 @@ iframe {
   margin-right: 20px;
   margin-top: 5px;
 }
+.button-add,
+.button-play,
+.button-info,
+.button-remove {
+  transition: 0.5s;
+  background-color: white;
+  font-size: 15px;
+}
+.button-add:hover {
+  background-color: rgb(160, 240, 241);
+}
+
+.button-play:hover {
+  background-color: rgb(160, 240, 241);
+}
+.button-info:hover {
+  background-color: rgb(160, 240, 241);
+}
+.button-remove:hover {
+  background-color: rgb(160, 240, 241);
+}
+
+.product-title,
+.product-price {
+  transition: 0.6s;
+  font-size: 14px;
+}
+.product-price:hover {
+  background-color: rgb(182, 246, 251);
+}
+.product-title:hover {
+  background-color: rgb(182, 246, 251);
+}
+.size-of-carts {
+  font-size: 16px;
+}
+.basket {
+  margin-left: 17px;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .logo {
     width: 320px;

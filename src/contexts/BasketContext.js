@@ -2,8 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { data } from "../data/data";
 import { templetsData } from "../data/templetsdata";
-import {firebase} from "../lib/firebase";
-import firestore from "firebase";
+import UserContext from "./user";
+import { firebase } from "../lib/firebase";
+import { getUserByUserId } from "../services/firebase";
 
 const BasketContext = React.createContext();
 
@@ -12,24 +13,32 @@ export function useBasket() {
 }
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
+  const { user } = useContext(UserContext);
   // let [productsData,setProudctsData] =useState([])
+  const [userProducts, setUserProducts] = useState([]);
   const templets = templetsData;
-let productsData = data;
+  let productsData = data;
+  console.log(userProducts, "userProducts");
+  console.log(user, "user");
   //fetching data from firebase
-  // useEffect(() => {
-  //   try {
-  //     const fetchData = async () => {
-  //       const db = firebase.firestore();
-  //       const data = await db.collection("products").get();
-  //       setProudctsData(
-  //         data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     };
-  //     fetchData();
-  //   } catch {
-  //     console.error("error");
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const db = firebase.firestore();
+        const data = await db
+          .collection("users")
+          .doc()
+          .collection("products")
+          .get();
+        setUserProducts(
+          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
+      };
+      fetchData();
+    } catch {
+      console.error("error");
+    }
+  }, []);
 
   // useEffect(() => {
   //   localStorage.setItem("products", JSON.stringify(cartItems));
@@ -48,6 +57,7 @@ let productsData = data;
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
+    console.log(user);
   };
 
   const onRemove = (product) => {
@@ -73,7 +83,8 @@ let productsData = data;
     totalPrice,
     templets,
     setCartItems,
-    productsData
+    productsData,
+    userProducts,
   };
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>

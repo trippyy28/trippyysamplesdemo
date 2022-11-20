@@ -22,7 +22,7 @@ const Checkout = (props) => {
   const { cartItems } = useBasket();
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
- 
+
   // const { localStorageArray } = useBasket();
   return (
     <Container>
@@ -34,13 +34,15 @@ const Checkout = (props) => {
             <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />
             <div>{item.price}$</div>
-            <button onClick={() => onRemove(item)}>Remove</button>
+            <button className="button-remove" onClick={() => onRemove(item)}>
+              Remove
+            </button>
           </Product>
         </div>
       ))}
       {/* <StripeCheckoutButton price={totalPrice} /> */}
       <div className="paypal">
-        <Paypal cartItems={cartItems}/>
+        <Paypal cartItems={cartItems} />
       </div>
     </Container>
   );

@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Basket from "./components/Basket";
 import Details from "./components/Details";
 import Login from "./auth/Login";
+import UserProducts from "./components/UserProducts";
 import HomePage from "./components/HomePage";
 import Signup from "./auth/Signup";
 import { BasketProvider } from "./contexts/BasketContext";
@@ -51,6 +52,9 @@ function App() {
                 </Route>
                 <Route path="/details/:id">
                   <Details />
+                </Route>
+                <Route path="/user">
+                  <UserProducts />
                 </Route>
               </Switch>
             </div>

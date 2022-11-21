@@ -80,9 +80,8 @@ const Gallery = () => {
               img={product.img}
               audioUrl={product.audioUrl}
             >
-              <div className="product-title">{product.title}</div>
+              <img width={150} height={150} src={product.img} alt="1" />
               <div className="product-price">{product.price}$</div>
-              <img width={100} height={100} src={product.img} alt="1" />
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
               <button

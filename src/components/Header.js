@@ -6,17 +6,17 @@ import Basket from "./Basket";
 import FirebaseContext from "../contexts/firebase";
 import UserContext from "../contexts/user";
 import { useBasket } from "../contexts/BasketContext";
-import { FaBeer } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
 import { doc, getDoc } from "firebase/firestore";
 // import { firebase } from "../lib/firebase";
 // import firestore from "firebase";
 const Background = styled.div`
   font-family: "Comic Sans MS";
-  background-color: rgb(168, 247, 255);
+  background-color: white;
   height: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   @media (max-width: 768px) {
     display: grid;
@@ -37,7 +37,7 @@ const Header = () => {
       {error && <Alert variant="danger">{error}</Alert>}
       {user ? (
         <div>
-          <h2 onClick={() => firebase.auth().signOut()}>Logout</h2>
+          <Link onClick={() => firebase.auth().signOut()}>Logout</Link>
           <h3>Hello! {user.displayName}</h3>
         </div>
       ) : (
@@ -56,7 +56,7 @@ const Header = () => {
       >
         {({ ...triggerHandler }) => (
           <h2 {...triggerHandler} className="basket">
-            <FaBeer> </FaBeer>
+            <FiShoppingCart> </FiShoppingCart>
             <span className="size-of-carts">({cartItems.length})</span>
           </h2>
         )}

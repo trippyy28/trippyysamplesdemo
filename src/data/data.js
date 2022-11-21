@@ -4,7 +4,7 @@ export const data = [
     price: "1",
     id: "1",
     title: "Deep-House Vibes",
-    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/DeepHouseVibes2.png?raw=true",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/DeepHouseVibes.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2019-12-11_-_Retro_Platforming_-_David_Fesliyan/2019-12-11_-_Retro_Platforming_-_David_Fesliyan.mp3",
     moreInfo: "Deep-House Vibes is a ...",

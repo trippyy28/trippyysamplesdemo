@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import { data } from "../data/data";
-import { templetsData } from "../data/templetsdata";
 import UserContext from "./user";
 import { firebase } from "../lib/firebase";
 import { getUserByUserId } from "../services/firebase";
@@ -14,12 +13,8 @@ export function useBasket() {
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
   const { user } = useContext(UserContext);
-  // let [productsData,setProudctsData] =useState([])
   const [userProducts, setUserProducts] = useState([]);
-  const templets = templetsData;
   let productsData = data;
-  console.log(userProducts, "userProducts");
-  console.log(user, "user");
   //fetching data from firebase
   useEffect(() => {
     try {
@@ -57,7 +52,6 @@ export function BasketProvider({ children }) {
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
-    console.log(user);
   };
 
   const onRemove = (product) => {
@@ -81,7 +75,7 @@ export function BasketProvider({ children }) {
     onRemove,
     itemsPrice,
     totalPrice,
-    templets,
+
     setCartItems,
     productsData,
     userProducts,

@@ -1,7 +1,6 @@
 import "./App.css";
 import "nes.css/css/nes.min.css";
 import Gallery from "./components/Gallery";
-import Templets from "./components/Templets";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import React from "react";
 import Header from "./components/Header";
@@ -34,9 +33,6 @@ function App() {
                 </Route>
                 <Route exact path="/about">
                   <HomePage />
-                </Route>
-                <Route exact path="/templets">
-                  <Templets />
                 </Route>
                 <Route exact path="/login">
                   <Login />

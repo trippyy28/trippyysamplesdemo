@@ -14,7 +14,7 @@ export const data = [
     price: "1",
     id: "2",
     title: "Trippy Future Bass",
-    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/92f53f10dd4d6da2354afcd9f0a23017a4cdc55f/src/imgs/TrippyFutureBass.png?raw=true",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/TrippyFutureBass.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2015-09-25_-_Old_Video_Game_Music_1_-_David_Fesliyan.mp3",
     moreInfo: "Trippy Future Bass is a...",

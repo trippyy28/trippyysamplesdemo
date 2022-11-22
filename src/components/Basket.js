@@ -6,15 +6,18 @@ import UserContext from "../contexts/user";
 
 const Container = styled.div`
   border: 2px solid black;
+  border-radius: 25px;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
   background-color: white;
   text-align: center;
+  font-family: "Courier New", Courier, monospace;
 `;
 const Product = styled.div`
   border: 1px solid ${({ isExpensive }) => (isExpensive ? "blue" : "black")};
+  border-radius: 25px;
   margin: 4px;
   margin-left: 2px;
   margin-right: 2px;
@@ -30,8 +33,8 @@ const Basket = () => {
 
   return (
     <Container>
-      <h2>Cart Items</h2>
-      <h3>Your Total Price is :{totalPrice}$</h3>
+      <h3>Cart Items</h3>
+      <h4>Your Total Price is :{totalPrice}$</h4>
       <div>{cartItems.length === 0 && <div>Cart is Empty</div>}</div>
       {cartItems.map((item) => (
         <div key={item.id}>
@@ -47,7 +50,11 @@ const Basket = () => {
       ))}
 
       <Link to="/checkout">
-        <button type="button" className="nes-btn is-primary">
+        <button
+          type="button"
+          className="nes-btn is-primary"
+          style={{ color: "black" }}
+        >
           Check Out
         </button>
       </Link>

@@ -17,12 +17,19 @@ const Container = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: center;
+  font-family: highgate, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
   align-items: center;
   flex-direction: column;
   border: 1px solid;
   border-radius: 25px;
   box-shadow: 5px 5px lightblue;
   margin: 2px;
+  transition: 1s;
+  &:hover {
+    box-shadow: 5px 5px gray;
+  }
 `;
 
 const FiltersContainer = styled.div`

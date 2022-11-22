@@ -4,7 +4,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { BsArrowRightShort } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
-import styles from "./styles.module.css";
+import styles from "../styles.module.css";
 const AudioPlayer = () => {
   // const [isPlaying, setIsPlaying] = useState("");
   // const [duration, setDuration] = useState(0);

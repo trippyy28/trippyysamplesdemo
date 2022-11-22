@@ -75,7 +75,6 @@ export function BasketProvider({ children }) {
     onRemove,
     itemsPrice,
     totalPrice,
-
     setCartItems,
     productsData,
     userProducts,

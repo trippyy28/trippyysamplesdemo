@@ -12,7 +12,7 @@ import { doc, getDoc } from "firebase/firestore";
 // import firestore from "firebase";
 const Background = styled.div`
   font-family: "Comic Sans MS";
-  height: 100px;
+  height: 90px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -24,10 +24,10 @@ const Background = styled.div`
 `;
 
 const LeftSection = styled.div`
-  font-size: 30px;
+  font-size: 25px;
 `;
 const RightSection = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   align-items: center;
 `;

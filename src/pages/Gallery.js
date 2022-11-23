@@ -10,8 +10,8 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 const Container = styled.div`
   border: 1px solid black;
-  padding: 10px;
   border-radius: 25px;
+  padding: 10px;
 `;
 
 const Product = styled.div`
@@ -33,20 +33,31 @@ const Product = styled.div`
 `;
 
 const FiltersContainer = styled.div`
-  background-color: #576ca8;
+  background-color: lightblue;
   border-radius: 25px;
   padding: 4px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 20px;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
   }
+`;
+const Button = styled.button`
+  color: black;
+  font-size: 25px;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;
 
 const VIEW_ALL = "All";
@@ -63,15 +74,15 @@ const Gallery = () => {
   return (
     <Container>
       <FiltersContainer>
-        <select
-          className="select"
-          onChange={(e) => setGenre(e.target.value)}
-          onBlur={(e) => setGenre(e.target.value)}
-        >
-          {genres.map((genre) => (
-            <option value={genre}>{genre}</option>
-          ))}
-        </select>
+        {genres.map((genre) => (
+          <button
+            className="nes-btn is-primary"
+            onClick={(e) => setGenre(e.target.value)}
+            value={genre}
+          >
+            {genre}
+          </button>
+        ))}
       </FiltersContainer>
       <Grid>
         {productsData

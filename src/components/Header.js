@@ -11,7 +11,12 @@ import { doc, getDoc } from "firebase/firestore";
 // import { firebase } from "../lib/firebase";
 // import firestore from "firebase";
 const Background = styled.div`
-  font-family: "Comic Sans MS";
+  font-family: nelson-engraved, sans-serif;
+
+  font-weight: 400;
+
+  font-style: normal;
+
   height: 90px;
   display: flex;
   flex-direction: row;
@@ -70,6 +75,22 @@ const Header = () => {
       ) : (
         <RightSection>
           <Link to="/login">Login</Link>
+          <OverlayTrigger
+            placement="bottom"
+            trigger={["click"]}
+            overlay={
+              <Tooltip id="button-tooltip-2">
+                <Basket />
+              </Tooltip>
+            }
+          >
+            {({ ...triggerHandler }) => (
+              <h2 {...triggerHandler} className="basket">
+                <FiShoppingCart> </FiShoppingCart>
+                <span className="size-of-carts">({cartItems.length})</span>
+              </h2>
+            )}
+          </OverlayTrigger>
         </RightSection>
       )}
     </Background>

@@ -33,7 +33,7 @@ const Product = styled.div`
 `;
 
 const FiltersContainer = styled.div`
-  background-color: lightblue;
+  background-color: rgb(238, 246, 241);
   border-radius: 25px;
   padding: 4px;
   font-family: "Press Start 2P", cursive;
@@ -52,11 +52,18 @@ const Grid = styled.div`
   }
 `;
 const Button = styled.button`
+  background-color: rgb(29, 221, 255);
   color: black;
-  font-size: 25px;
+  font-size: 15px;
+  font-family: nelson-engraved, sans-serif;
+
+  font-weight: 400;
+
+  font-style: normal;
+
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid black;
   border-radius: 3px;
 `;
 
@@ -75,13 +82,9 @@ const Gallery = () => {
     <Container>
       <FiltersContainer>
         {genres.map((genre) => (
-          <button
-            className="nes-btn is-primary"
-            onClick={(e) => setGenre(e.target.value)}
-            value={genre}
-          >
+          <Button onClick={(e) => setGenre(e.target.value)} value={genre}>
             {genre}
-          </button>
+          </Button>
         ))}
       </FiltersContainer>
       <Grid>

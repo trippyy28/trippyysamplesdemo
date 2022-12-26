@@ -12,7 +12,7 @@ import { doc, getDoc } from "firebase/firestore";
 // import firestore from "firebase";
 const Background = styled.div`
   font-family: marvin, sans-serif;
-  background-color: #d0f9e8;
+  background-color: #b8f1f6;
   font-weight: 400;
   font-style: normal;
   height: 90px;

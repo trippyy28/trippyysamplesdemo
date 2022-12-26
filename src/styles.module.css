@@ -1,12 +1,12 @@
 .audioPlayer {
-  --primary: #3bb2d6;
+  --primary: #3d4d53;
   --secondery: #ffe882;
   display: flex;
   width: 430px;
   align-items: center;
   justify-content: center;
   margin: 20px auto 0 auto;
-  background-color: rgb(142, 151, 182);
+  background-color: rgb(69, 191, 235);
   border-radius: 25px;
 }
 .fowardBackward {

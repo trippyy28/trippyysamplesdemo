@@ -40,6 +40,7 @@ const FiltersContainer = styled.div`
   font-size: 13px;
   display: flex;
   justify-content: space-around;
+
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -66,6 +67,11 @@ const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid black;
   border-radius: 3px;
+  transition: 0.5s;
+  &:hover,
+  &:focus {
+    background-color: white;
+  }
 `;
 
 const VIEW_ALL = "All";

@@ -25,7 +25,6 @@ export function BasketProvider({ children }) {
           .collection("users")
           .doc()
           .collection("products")
-
           .get();
         setUserProducts(
           data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))

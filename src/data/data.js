@@ -64,7 +64,7 @@ export const data = [
     price: "1",
     id: "6",
     title: "8bit Techno",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5H_4rRdbTpZt4HoxOI1FHdt7NqtF-0S_zpw&usqp=CAU",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/8bit%20techno.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2020-04-24_-_Arcade_Kid_-_FesliyanStudios.com_-_David_Renda/2020-04-24_-_Arcade_Kid_-_FesliyanStudios.com_-_David_Renda.mp3",
     moreInfo: "8bit Techno is a..",

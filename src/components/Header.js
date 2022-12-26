@@ -11,12 +11,9 @@ import { doc, getDoc } from "firebase/firestore";
 // import { firebase } from "../lib/firebase";
 // import firestore from "firebase";
 const Background = styled.div`
-  font-family: nelson-engraved, sans-serif;
-
+  font-family: marvin, sans-serif;
   font-weight: 400;
-
   font-style: normal;
-
   height: 90px;
   display: flex;
   flex-direction: row;

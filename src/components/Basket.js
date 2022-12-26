@@ -7,6 +7,9 @@ import UserContext from "../contexts/user";
 const Container = styled.div`
   border: 2px solid black;
   border-radius: 25px;
+  font-family: nelson-engraved, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
@@ -50,13 +53,7 @@ const Basket = () => {
       ))}
 
       <Link to="/checkout">
-        <button
-          type="button"
-          className="nes-btn is-primary"
-          style={{ color: "black" }}
-        >
-          Check Out
-        </button>
+        <button style={{ color: "black" }}>Check Out</button>
       </Link>
     </Container>
   );

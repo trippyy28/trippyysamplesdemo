@@ -55,12 +55,9 @@ const Button = styled.button`
   background-color: rgb(29, 221, 255);
   color: black;
   font-size: 15px;
-  font-family: nelson-engraved, sans-serif;
-
+  font-family: marvin, sans-serif;
   font-weight: 400;
-
   font-style: normal;
-
   margin: 1em;
   padding: 0.25em 1em;
   border: 2px solid black;

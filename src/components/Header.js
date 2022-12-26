@@ -20,8 +20,8 @@ const Background = styled.div`
   justify-content: space-around;
   align-items: center;
   @media (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 `;
 

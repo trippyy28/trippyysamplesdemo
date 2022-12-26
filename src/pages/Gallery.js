@@ -40,6 +40,10 @@ const FiltersContainer = styled.div`
   font-size: 13px;
   display: flex;
   justify-content: space-around;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Grid = styled.div`
@@ -75,6 +79,7 @@ const Gallery = () => {
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(productsData, "genre"));
   genres.unshift(VIEW_ALL);
+
   return (
     <Container>
       <FiltersContainer>

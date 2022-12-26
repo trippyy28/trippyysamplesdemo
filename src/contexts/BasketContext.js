@@ -15,6 +15,8 @@ export function BasketProvider({ children }) {
   const { user } = useContext(UserContext);
   const [userProducts, setUserProducts] = useState([]);
   let productsData = data;
+  console.log(user);
+  console.log(userProducts);
   //fetching data from firebase
   useEffect(() => {
     try {
@@ -22,8 +24,9 @@ export function BasketProvider({ children }) {
         const db = firebase.firestore();
         const data = await db
           .collection("users")
-          .doc()
+          .doc("AIzaSyD7fjE2toONwUbnZ5UP9Mtv4op7Ci_RQlY")
           .collection("products")
+          .doc("products")
           .get();
         setUserProducts(
           data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))

@@ -34,7 +34,7 @@ export const data = [
     price: "1",
     id: "4",
     title: "Space Groove",
-    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/Space-Grooveb.png?raw=truehttps://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/Space-Grooveb.png?raw=true",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/spacegrooveb2.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2019-09-29_-_Silly_Feet_-_FesliyanStudios.com_-_David_Renda.mp3",
     moreInfo: "Space Groove is a...",

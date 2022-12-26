@@ -44,7 +44,7 @@ export const data = [
     price: "1",
     id: "5",
     title: "8bit Minimal",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzQro2PZt3E9Ayfdn_Itm1PPvCeRpPUMTgbg&usqp=CAU",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/8bit.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2021-03-17_-_JPOP_-_www.FesliyanStudios.com_Steve_Oxen/2021-03-17_-_JPOP_-_www.FesliyanStudios.com_Steve_Oxen.mp3",
     moreInfo: "8bit Minimal is a...",

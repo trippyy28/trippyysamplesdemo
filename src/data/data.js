@@ -34,7 +34,7 @@ export const data = [
     price: "1",
     id: "4",
     title: "Space Groove",
-    img: "https://cdna.artstation.com/p/assets/images/images/000/613/868/large/hendry-roesly-chr8bit.jpg?1428583453",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/Space-Groove.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2019-09-29_-_Silly_Feet_-_FesliyanStudios.com_-_David_Renda.mp3",
     moreInfo: "Space Groove is a...",

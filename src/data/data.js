@@ -24,7 +24,7 @@ export const data = [
     price: "1",
     id: "3",
     title: "Groove House",
-    img: "https://image.shutterstock.com/image-vector/set-coin-monster-head-sword-260nw-1781244794.jpg",
+    img: "https://github.com/trippyy28/trippyysamplesdemo/blob/master/src/imgs/Groove%20House2.png?raw=true",
     audioUrl:
       "https://www.fesliyanstudios.com/musicfiles/2020-10-27_-_Ethereal_-_www.FesliyanStudios.com_Steve_Oxen/2020-10-27_-_Ethereal_-_www.FesliyanStudios.com_Steve_Oxen.mp3",
     moreInfo: "Groove House is a...",

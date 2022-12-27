@@ -8,17 +8,18 @@ import UserContext from "../contexts/user";
 import { useBasket } from "../contexts/BasketContext";
 import { FiShoppingCart } from "react-icons/fi";
 import { doc, getDoc } from "firebase/firestore";
+import star from "../imgs/star-alone.png";
 // import { firebase } from "../lib/firebase";
 // import firestore from "firebase";
 const Background = styled.div`
   font-family: marvin, sans-serif;
-  background-color: #b8f1f6;
+
   font-weight: 400;
   font-style: normal;
   height: 90px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   @media (max-width: 768px) {
     display: flex;
@@ -27,7 +28,14 @@ const Background = styled.div`
 `;
 
 const LeftSection = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-size: 25px;
+  position: relative;
+  top: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const RightSection = styled.div`
   font-size: 25px;
@@ -47,6 +55,12 @@ const Header = () => {
     <Background>
       {error && <Alert variant="danger">{error}</Alert>}
       <LeftSection>
+        <img
+          src={star}
+          alt="star"
+          width={60}
+          style={{ position: "relative", top: "-10px" }}
+        />
         {user ? <h4>Hello! {user.displayName}</h4> : <h4>Welcome</h4>}
       </LeftSection>
 

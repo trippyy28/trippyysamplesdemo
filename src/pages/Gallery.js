@@ -115,7 +115,9 @@ const Gallery = () => {
 
               <button
                 className="button-play"
-                onClick={() => togglePlayPauseAndAddAudio(product.audioUrl)}
+                onClick={() =>
+                  togglePlayPauseAndAddAudio(product.audioUrl, product.id)
+                }
               >
                 {audioUrl === product.audioUrl && isPlaying ? (
                   <FaPause />

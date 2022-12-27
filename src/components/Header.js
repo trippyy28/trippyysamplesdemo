@@ -13,7 +13,7 @@ import star from "../imgs/star-alone.png";
 // import firestore from "firebase";
 const Background = styled.div`
   font-family: marvin, sans-serif;
-
+  background-color: white;
   font-weight: 400;
   font-style: normal;
   height: 90px;

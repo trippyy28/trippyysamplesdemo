@@ -9,22 +9,23 @@ import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 const Container = styled.div`
-  border: 1px solid black;
   border-radius: 25px;
   padding: 10px;
+  background-color: #a2e9ff;
 `;
 
 const Product = styled.div`
   display: flex;
   justify-content: center;
-  font-family: highgate, sans-serif;
-  font-weight: bolder;
-  font-style: italic;
+  font-family: marvin, sans-serif;
+
+  font-weight: 400;
+  font-style: normal;
   align-items: center;
   flex-direction: column;
-  border: 1px solid;
+  border: 0.5px solid;
   border-radius: 25px;
-  box-shadow: 5px 5px lightblue;
+  box-shadow: 3px 3px lightblue;
   margin: 2px;
   transition: 1s;
   &:hover {
@@ -33,7 +34,6 @@ const Product = styled.div`
 `;
 
 const FiltersContainer = styled.div`
-  background-color: rgb(238, 246, 241);
   border-radius: 25px;
   padding: 4px;
   font-family: "Press Start 2P", cursive;

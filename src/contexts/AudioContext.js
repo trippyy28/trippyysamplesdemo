@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-
+import UsePrevious from "../hooks/hooks";
 const AudioContext = React.createContext();
 
 export function useAudio() {
@@ -10,9 +10,14 @@ export function AudioProvider({ children }) {
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [currentId, setCurrentId] = useState(0);
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
+  console.log(isPlaying);
+  console.log(audioPlayer);
+  console.log(audioUrl);
+  console.log(currentId);
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -20,10 +25,11 @@ export function AudioProvider({ children }) {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  async function togglePlayPauseAndAddAudio(e) {
-    await setAudioUrl(e);
+  function togglePlayPauseAndAddAudio(e, id) {
+    setCurrentId(id);
+    setAudioUrl(e);
     const prevValue = isPlaying;
-    await setIsPlaying(!prevValue);
+    setIsPlaying(!prevValue);
     if (!prevValue) {
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);

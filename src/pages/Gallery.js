@@ -18,18 +18,18 @@ const Product = styled.div`
   display: flex;
   justify-content: center;
   font-family: marvin, sans-serif;
-
   font-weight: 400;
   font-style: normal;
   align-items: center;
   flex-direction: column;
-  border: 0.5px solid;
+  /* border: 0.5px solid; */
   border-radius: 25px;
-  box-shadow: 3px 3px lightblue;
+
   margin: 2px;
-  transition: 1s;
+  transition: 0.5s;
   &:hover {
-    box-shadow: 5px 5px gray;
+    box-shadow: 3px 3px 3px 3px rgb(120, 120, 130);
+    background-color: whitesmoke;
   }
 `;
 
@@ -82,6 +82,7 @@ const Gallery = () => {
   const { togglePlayPauseAndAddAudio } = useAudio();
   const { audioUrl } = useAudio();
   const { isPlaying } = useAudio();
+  const { setIsPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
   const genres = _.uniq(_.map(productsData, "genre"));
   genres.unshift(VIEW_ALL);
@@ -109,8 +110,8 @@ const Gallery = () => {
               img={product.img}
               audioUrl={product.audioUrl}
             >
-              <img width={150} height={150} src={product.img} alt="1" />
-              <div className="product-price">{product.price}$</div>
+              <img width={180} height={180} src={product.img} alt="1" />
+              {/* <div className="product-price">{product.price}$</div> */}
               {/* <audio src={product.audioUrl} controls="Play" /> */}
 
               <button

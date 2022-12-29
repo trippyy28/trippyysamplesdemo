@@ -13,8 +13,10 @@ export function AudioProvider({ children }) {
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
-  console.log(isPlaying);
-  // console.log(audioUrl);
+
+  console.log(isPlaying, "current");
+  console.log(audioUrl);
+
   // console.log(audioPlayer.current);
 
   useEffect(() => {
@@ -23,19 +25,21 @@ export function AudioProvider({ children }) {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  function togglePlayPauseAndAddAudio(e) {
-    setAudioUrl(e);
-    let prevValue = isPlaying;
-    setIsPlaying(!prevValue);
-    console.log(prevValue, "prevValue");
-    if (!prevValue) {
+  useEffect(() => {
+    if (isPlaying) {
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
-    } else {
+    } else if (!isPlaying) {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  }
+  }, [isPlaying]);
+
+  const togglePlayPauseAndAddAudio = (e) => {
+    setAudioUrl(e);
+    setIsPlaying((lastIsPlaying) => !lastIsPlaying);
+  };
+
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();

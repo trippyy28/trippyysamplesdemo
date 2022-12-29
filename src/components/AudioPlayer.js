@@ -15,7 +15,6 @@ const AudioPlayer = () => {
   const { currentTime } = useAudio();
   const { progressBar } = useAudio();
   const { changeRange } = useAudio();
-  const { togglePlayPause } = useAudio();
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -25,6 +24,14 @@ const AudioPlayer = () => {
     return `${returnedMinutes}:${returnedSeconds}`;
   };
 
+  function togglePlayPause() {
+    setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      audioPlayer.current.pause();
+    } else {
+      audioPlayer.current.play();
+    }
+  }
   return (
     <div className={styles.audioPlayer}>
       <audio ref={audioPlayer} src={audioUrl} preload="metadata"></audio>

@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useAudio } from "../contexts/AudioContext";
-import { BsArrowLeftShort } from "react-icons/bs";
-import { BsArrowRightShort } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import styles from "../styles.module.css";
@@ -17,16 +15,7 @@ const AudioPlayer = () => {
   const { currentTime } = useAudio();
   const { progressBar } = useAudio();
   const { changeRange } = useAudio();
-
-  function togglePlayPause() {
-    const prevValue = isPlaying;
-    setIsPlaying(!prevValue);
-    if (!prevValue) {
-      audioPlayer.current.play();
-    } else {
-      audioPlayer.current.pause();
-    }
-  }
+  const { togglePlayPause } = useAudio();
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -39,7 +28,6 @@ const AudioPlayer = () => {
   return (
     <div className={styles.audioPlayer}>
       <audio ref={audioPlayer} src={audioUrl} preload="metadata"></audio>
-
       <button onClick={togglePlayPause} className={styles.playPause}>
         {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
       </button>

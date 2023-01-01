@@ -14,6 +14,7 @@ import { BasketProvider } from "./contexts/BasketContext";
 import { AudioProvider } from "./contexts/AudioContext";
 import Checkout from "./pages/Checkout";
 import AudioPlayer from "./components/AudioPlayer";
+import VolumeControl from "./components/VolumeControl";
 import Footer from "./components/Footer";
 import UserContext from "./contexts/user";
 import useAuthListener from "./hooks/user-auth-listener";
@@ -56,6 +57,7 @@ function App() {
             </div>
           </BrowserRouter>
           <AudioPlayer />
+          <VolumeControl />
           <Footer />
         </AudioProvider>
       </BasketProvider>

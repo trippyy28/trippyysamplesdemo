@@ -14,6 +14,7 @@ export function AudioProvider({ children }) {
   const progressBar = useRef();
   const animationRef = useRef();
   const isPlayingRef = useRef(false);
+  const volumeBarRef = useRef(0.1);
 
   console.log(isPlaying, "current");
   console.log(audioUrl);

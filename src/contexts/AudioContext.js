@@ -13,6 +13,7 @@ export function AudioProvider({ children }) {
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
+  const isPlayingRef = useRef(false);
 
   console.log(isPlaying, "current");
   console.log(audioUrl);
@@ -26,14 +27,39 @@ export function AudioProvider({ children }) {
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   useEffect(() => {
-    if (isPlaying) {
-      audioPlayer.current.play();
-      animationRef.current = requestAnimationFrame(whilePlaying);
-    } else if (!isPlaying) {
+    audioPlayer.current.addEventListener("canplay", () => {
+      console.log("canplay");
+    });
+    audioPlayer.current.addEventListener("canplaythrough", () => {
+      if (isPlaying) {
+        audioPlayer.current.play();
+        animationRef.current = requestAnimationFrame(whilePlaying);
+      }
+      console.log("canplaythrough");
+    });
+    audioPlayer.current.addEventListener("playing", () => {
+      console.log("playing");
+      setIsPlaying(true);
+    });
+
+    if (!isPlaying) {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
+    } else {
+      audioPlayer.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
     }
   }, [isPlaying]);
+
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     audioPlayer.current.play();
+  //     animationRef.current = requestAnimationFrame(whilePlaying);
+  //   } else if (!isPlaying) {
+  //     audioPlayer.current.pause();
+  //     cancelAnimationFrame(animationRef.current);
+  //   }
+  // }, [isPlaying]);
 
   const togglePlayPauseAndAddAudio = (e) => {
     setAudioUrl(e);

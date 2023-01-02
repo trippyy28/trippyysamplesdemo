@@ -20,7 +20,7 @@ const Container = styled.div`
 const Product = styled.div`
   border-radius: 25px;
   box-shadow: 3px 3px 3px 3px rgb(120, 120, 130);
-  background-color: whitesmoke;
+  background-color: white;
   margin: 8px;
   margin-left: 2px;
   margin-right: 2px;

@@ -43,6 +43,12 @@ export function AudioProvider({ children }) {
       setIsPlaying(true);
     });
 
+    audioPlayer.current.addEventListener("ended", () => {
+      // when the song ends
+      progressBar.current.value = 0;
+      setIsPlaying(false);
+    });
+
     if (!isPlaying) {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);

@@ -36,8 +36,6 @@ const Product = styled.div`
 const FiltersContainer = styled.div`
   border-radius: 25px;
   padding: 4px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 13px;
   display: flex;
   justify-content: space-around;
 

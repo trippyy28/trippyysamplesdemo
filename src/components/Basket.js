@@ -2,26 +2,26 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
+import styles from "../css/basket.module.css";
 import UserContext from "../contexts/user";
 
 const Container = styled.div`
-  border: 2px solid black;
+  box-shadow: 3px 3px 3px 3px rgb(120, 120, 130);
+  background-color: whitesmoke;
   border-radius: 25px;
-  font-family: nelson-engraved, sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: monospace;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
   background-color: white;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
 `;
 const Product = styled.div`
-  border: 1px solid ${({ isExpensive }) => (isExpensive ? "blue" : "black")};
   border-radius: 25px;
-  margin: 4px;
+  box-shadow: 3px 3px 3px 3px rgb(120, 120, 130);
+  background-color: whitesmoke;
+  margin: 8px;
   margin-left: 2px;
   margin-right: 2px;
   text-align: center;
@@ -36,16 +36,15 @@ const Basket = () => {
 
   return (
     <Container>
-      <h3>Cart Items</h3>
-      <h4>Your Total Price is :{totalPrice}$</h4>
+      <h4>Your Total Price is :</h4>
+      <h2>{totalPrice}$</h2>
       <div>{cartItems.length === 0 && <div>Cart is Empty</div>}</div>
       {cartItems.map((item) => (
         <div key={item.id}>
           <Product>
-            <div>{item.title}</div>
             <img src={item.img} width={100} height={100} alt={item.id} />
-            <div>{item.price}$</div>
-            <button className="button-remove" onClick={() => onRemove(item)}>
+            <div className={styles.price}>{item.price}$</div>
+            <button className={styles.btn} onClick={() => onRemove(item)}>
               Remove
             </button>
           </Product>
@@ -53,7 +52,7 @@ const Basket = () => {
       ))}
 
       <Link to="/checkout">
-        <button style={{ color: "black" }}>Check Out</button>
+        <button className={styles.btn}>Check Out</button>
       </Link>
     </Container>
   );

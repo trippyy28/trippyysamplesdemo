@@ -11,6 +11,9 @@ const Container = styled.div`
   margin-top: 20px;
   background-color: white;
   text-align: center;
+  font-family: marvin, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 `;
 const Product = styled.div`
   border: 1px solid;

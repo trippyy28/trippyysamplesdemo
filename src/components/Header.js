@@ -55,12 +55,14 @@ const Header = () => {
     <Background>
       {error && <Alert variant="danger">{error}</Alert>}
       <LeftSection>
-        <img
-          src={star}
-          alt="star"
-          width={60}
-          style={{ position: "relative", top: "-10px" }}
-        />
+        <Link to="/">
+          <img
+            src={star}
+            alt="star"
+            width={60}
+            style={{ position: "relative", top: "-10px" }}
+          />
+        </Link>
         {user ? <h4>Hello! {user.displayName}</h4> : <h4>Welcome</h4>}
       </LeftSection>
 

@@ -1,0 +1,16 @@
+.btn {
+  background-color: black;
+  color: white;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+  font-weight: 900;
+}
+
+.price {
+  font-weight: 900;
+}

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
-import styles from "../styles.module.css";
+import styles from "../css/audioPlayer.module.css";
 const AudioPlayer = () => {
   // const [isPlaying, setIsPlaying] = useState("");
   // const [duration, setDuration] = useState(0);

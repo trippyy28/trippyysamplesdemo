@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAudio } from "../contexts/AudioContext";
+import styles from "../css/volumeControl.module.css";
 function VolumeControl() {
   const [volume, setVolume] = useState(1);
   const { audioPlayer } = useAudio();
@@ -9,7 +10,7 @@ function VolumeControl() {
     audioPlayer.current.volume = event.target.value;
   }
   return (
-    <div>
+    <div className={styles.vol}>
       <input
         type="range"
         min="0"

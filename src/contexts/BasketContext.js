@@ -12,29 +12,29 @@ export function useBasket() {
 }
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
-  const { user } = useContext(UserContext);
+
   const [userProducts, setUserProducts] = useState([]);
   let productsData = data;
 
   //fetching data from firebase
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        const db = firebase.firestore();
-        const data = await db
-          .collection("users")
-          .doc()
-          .collection("products")
-          .get();
-        setUserProducts(
-          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      };
-      fetchData();
-    } catch {
-      console.error("error");
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     const fetchData = async () => {
+  //       const db = firebase.firestore();
+  //       const data = await db
+  //         .collection("users")
+  //         .doc()
+  //         .collection("products")
+  //         .get();
+  //       setUserProducts(
+  //         data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+  //       );
+  //     };
+  //     fetchData();
+  //   } catch {
+  //     console.error("error");
+  //   }
+  // }, []);
 
   // useEffect(() => {
   //   localStorage.setItem("products", JSON.stringify(cartItems));

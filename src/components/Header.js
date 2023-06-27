@@ -9,8 +9,7 @@ import { useBasket } from "../contexts/BasketContext";
 import { FiShoppingCart } from "react-icons/fi";
 import { doc, getDoc } from "firebase/firestore";
 import star from "../imgs/star-alone.png";
-// import { firebase } from "../lib/firebase";
-// import firestore from "firebase";
+
 const Background = styled.div`
   font-family: marvin, sans-serif;
   background-color: white;
@@ -65,6 +64,7 @@ const Header = () => {
         </Link>
         {user ? <h4>Hello! {user.displayName}</h4> : <h4>Welcome</h4>}
       </LeftSection>
+      <h1>trippysamples</h1>
 
       {user ? (
         <RightSection>

@@ -16,8 +16,8 @@ export function AudioProvider({ children }) {
   const isPlayingRef = useRef(false);
   const volumeBarRef = useRef(0.1);
 
-  console.log(isPlaying, "current");
-  console.log(audioUrl);
+  // console.log(isPlaying, "current");
+  // console.log(audioUrl);
 
   // console.log(audioPlayer.current);
 
@@ -28,18 +28,13 @@ export function AudioProvider({ children }) {
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   useEffect(() => {
-    audioPlayer.current.addEventListener("canplay", () => {
-      console.log("canplay");
-    });
     audioPlayer.current.addEventListener("canplaythrough", () => {
       if (isPlaying) {
         audioPlayer.current.play();
         animationRef.current = requestAnimationFrame(whilePlaying);
       }
-      console.log("canplaythrough");
     });
     audioPlayer.current.addEventListener("playing", () => {
-      console.log("playing");
       setIsPlaying(true);
     });
 
@@ -57,16 +52,6 @@ export function AudioProvider({ children }) {
       animationRef.current = requestAnimationFrame(whilePlaying);
     }
   }, [isPlaying]);
-
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioPlayer.current.play();
-  //     animationRef.current = requestAnimationFrame(whilePlaying);
-  //   } else if (!isPlaying) {
-  //     audioPlayer.current.pause();
-  //     cancelAnimationFrame(animationRef.current);
-  //   }
-  // }, [isPlaying]);
 
   const togglePlayPauseAndAddAudio = (e) => {
     setAudioUrl(e);

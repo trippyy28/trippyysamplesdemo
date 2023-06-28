@@ -109,8 +109,6 @@ const Gallery = () => {
               audioUrl={product.audioUrl}
             >
               <img width={180} height={180} src={product.img} alt="1" />
-              {/* <div className="product-price">{product.price}$</div> */}
-              {/* <audio src={product.audioUrl} controls="Play" /> */}
 
               <button
                 className="button-play"

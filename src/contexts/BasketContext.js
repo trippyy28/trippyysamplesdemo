@@ -12,10 +12,10 @@ export function useBasket() {
 }
 export function BasketProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
-
+  const { user } = useContext(UserContext);
   const [userProducts, setUserProducts] = useState([]);
   let productsData = data;
-
+  console.log(getUserByUserId.name, "getname");
   //fetching data from firebase
   // useEffect(() => {
   //   try {
@@ -67,6 +67,7 @@ export function BasketProvider({ children }) {
       );
     }
   };
+
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalPrice = itemsPrice;
 

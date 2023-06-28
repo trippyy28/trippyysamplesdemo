@@ -16,29 +16,6 @@ export function BasketProvider({ children }) {
   const [userProducts, setUserProducts] = useState([]);
   let productsData = data;
   console.log(getUserByUserId.name, "getname");
-  //fetching data from firebase
-  // useEffect(() => {
-  //   try {
-  //     const fetchData = async () => {
-  //       const db = firebase.firestore();
-  //       const data = await db
-  //         .collection("users")
-  //         .doc()
-  //         .collection("products")
-  //         .get();
-  //       setUserProducts(
-  //         data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     };
-  //     fetchData();
-  //   } catch {
-  //     console.error("error");
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("products", JSON.stringify(cartItems));
-  // }, [cartItems]);
 
   const onAdd = (product) => {
     const cartItem = cartItems.find((x) => x.id === product.id);

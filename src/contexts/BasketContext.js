@@ -47,7 +47,7 @@ export function BasketProvider({ children }) {
         cartItems.map(
           (x) => (x.id === product.id ? { ...cartItem } : x)
           //add it to the code after ...cartItem if you want the user to add more products on each item:
-          //, qty: cartItem.qty + 1
+          //, qty: cartItem.qty + 1\
         )
       );
     } else {

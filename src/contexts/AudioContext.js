@@ -16,11 +16,6 @@ export function AudioProvider({ children }) {
   const isPlayingRef = useRef(false);
   const volumeBarRef = useRef(0.1);
 
-  // console.log(isPlaying, "current");
-  // console.log(audioUrl);
-
-  // console.log(audioPlayer.current);
-
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);

@@ -31,8 +31,6 @@ const Basket = () => {
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
   const { user } = useContext(UserContext);
-  // let { localStorageArray } = useBasket();
-  // const localStorageArray = localStorage.getItem("products");
 
   return (
     <Container>

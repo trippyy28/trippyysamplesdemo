@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import "nes.css/css/nes.min.css";
@@ -8,6 +8,8 @@ import { useBasket } from "../contexts/BasketContext";
 import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
+import UserContext from "../contexts/user";
+
 const Container = styled.div`
   border-radius: 25px;
   padding: 10px;
@@ -55,7 +57,7 @@ const Grid = styled.div`
   }
 `;
 const Button = styled.button`
-  background-color: rgb(29, 221, 255);
+  background-color: white;
   color: black;
   font-size: 15px;
   font-family: marvin, sans-serif;
@@ -68,7 +70,7 @@ const Button = styled.button`
   transition: 0.5s;
   &:hover,
   &:focus {
-    background-color: white;
+    background-color: rgb(29, 221, 255);
   }
 `;
 
@@ -82,6 +84,8 @@ const Gallery = () => {
   const { isPlaying } = useAudio();
   const { setIsPlaying } = useAudio();
   const [selectedGenre, setGenre] = useState(VIEW_ALL);
+  const { user } = useContext(UserContext);
+
   const genres = _.uniq(_.map(productsData, "genre"));
   genres.unshift(VIEW_ALL);
 

@@ -48,6 +48,7 @@ const Header = () => {
   const [userProduct, setUserProduct] = useState([]);
   const { cartItems } = useBasket();
   const { firebase } = useContext(FirebaseContext);
+  const { auth } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
 
   return (
@@ -68,7 +69,7 @@ const Header = () => {
 
       {user ? (
         <RightSection>
-          <Link onClick={() => firebase.auth().signOut()}>Logout</Link>
+          <Link onClick={() => auth.signOut()}>Logout</Link>
           <OverlayTrigger
             placement="bottom"
             trigger={["click"]}

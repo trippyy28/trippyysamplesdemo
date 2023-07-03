@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useBasket } from "../contexts/BasketContext";
+import { userContext } from "../contexts/user";
 import styles from "../css/basket.module.css";
 import UserContext from "../contexts/user";
 
@@ -31,6 +32,7 @@ const Basket = () => {
   const { onRemove } = useBasket();
   const { totalPrice } = useBasket();
   const { user } = useContext(UserContext);
+  const userId = user.uid;
 
   return (
     <Container>
@@ -42,7 +44,10 @@ const Basket = () => {
           <Product>
             <img src={item.img} width={100} height={100} alt={item.id} />
             <div className={styles.price}>{item.price}$</div>
-            <button className={styles.btn} onClick={() => onRemove(item)}>
+            <button
+              className={styles.btn}
+              onClick={() => onRemove(item, userId)}
+            >
               Remove
             </button>
           </Product>

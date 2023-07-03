@@ -1,49 +1,71 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import { data } from "../data/data";
 import UserContext from "./user";
-import { firebase } from "../lib/firebase";
-import { getUserByUserId } from "../services/firebase";
+import FirebaseContext from "../contexts/firebase";
+import { collection, updateDoc, doc, getDoc } from "firebase/firestore";
 
 const BasketContext = React.createContext();
 
 export function useBasket() {
   return useContext(BasketContext);
 }
+
 export function BasketProvider({ children }) {
-  let [cartItems, setCartItems] = useState([]);
+  const { firebase } = useContext(FirebaseContext);
+  const { firestore } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
-  const [userProducts, setUserProducts] = useState([]);
+
+  // console.log(user.uid);
+
+  let [cartItems, setCartItems] = useState([]);
   let productsData = data;
-  console.log(getUserByUserId.name, "getname");
+  const [userProducts, setUserProducts] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      const userRef = doc(firestore, "users", user.uid);
+      const snap = getDoc(userRef);
+
+      snap.then((docSnap) => {
+        if (docSnap.exists()) {
+          setCartItems(docSnap.data().cart);
+        }
+      });
+    }
+  }, [user]);
 
   const onAdd = (product) => {
+    let newCartItems;
     const cartItem = cartItems.find((x) => x.id === product.id);
     if (cartItem) {
-      setCartItems(
-        cartItems.map(
-          (x) => (x.id === product.id ? { ...cartItem } : x)
-          //add it to the code after ...cartItem if you want the user to add more products on each item:
-          //, qty: cartItem.qty + 1\
-        )
+      newCartItems = cartItems.map((x) =>
+        x.id === product.id ? { ...cartItem } : x
       );
     } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+      newCartItems = [...cartItems, { ...product, qty: 1 }];
     }
+    setCartItems(newCartItems);
+    updateCartInFirestore(user.uid, newCartItems);
   };
 
   const onRemove = (product) => {
+    let newCartItems;
     const cartItem = cartItems.find((x) => x.id === product.id);
     if (cartItem.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+      newCartItems = cartItems.filter((x) => x.id !== product.id);
     } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...cartItem, qty: cartItem.qty - 1 } : x
-        )
+      newCartItems = cartItems.map((x) =>
+        x.id === product.id ? { ...cartItem, qty: cartItem.qty - 1 } : x
       );
     }
+    setCartItems(newCartItems);
+    updateCartInFirestore(user.uid, newCartItems);
   };
+
+  async function updateCartInFirestore(userId, cartItems) {
+    const userRef = doc(firestore, "users", userId);
+    await updateDoc(userRef, { cart: cartItems });
+  }
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalPrice = itemsPrice;
@@ -58,6 +80,7 @@ export function BasketProvider({ children }) {
     productsData,
     userProducts,
   };
+
   return (
     <BasketContext.Provider value={value}>{children}</BasketContext.Provider>
   );

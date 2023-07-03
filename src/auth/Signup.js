@@ -1,10 +1,14 @@
-import React, { useRef, useState, useContext } from "react";
-
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 import FirebaseContext from "../contexts/firebase";
 import { doesUserNameExist } from "../services/firebase";
+
 const Signup = () => {
   const { firebase } = useContext(FirebaseContext);
+  const { firestore } = useContext(FirebaseContext);
+  const { auth } = useContext(FirebaseContext);
   const [username, setUsername] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -18,22 +22,29 @@ const Signup = () => {
     const usernameExists = await doesUserNameExist(username);
     if (!usernameExists.length) {
       try {
-        const createdUserResult = await firebase
-          .auth()
-          .createUserWithEmailAndPassword(emailAddress, password);
+        const createdUserResult = await createUserWithEmailAndPassword(
+          auth,
+          emailAddress,
+          password
+        );
 
-        await createdUserResult.user.updateProfile({
+        await updateProfile(createdUserResult.user, {
           displayName: username,
         });
 
-        await firebase.firestore().collection("users").add({
+        // Use collection to get a CollectionReference
+        const usersCollection = collection(firestore, "users");
+        const userRef = doc(usersCollection, createdUserResult.user.uid);
+
+        await setDoc(userRef, {
           userId: createdUserResult.user.uid,
           username: username.toLowerCase(),
           emailAddress: emailAddress.toLowerCase(),
           dateCreated: Date.now(),
+          cart: [], // Initialize the cart with an empty array
         });
+
         history.push("/");
-        // we have to do a redirect to the dashboard
       } catch (error) {
         setError(error.message);
       }
@@ -44,6 +55,7 @@ const Signup = () => {
       setError("That username is already taken, please try another!");
     }
   };
+
   return (
     <>
       <div className="">
@@ -71,6 +83,7 @@ const Signup = () => {
                 type="text"
                 placeholder="Email address"
               />
+
               <input
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
@@ -79,6 +92,7 @@ const Signup = () => {
                 type="password"
                 placeholder="Password"
               />
+
               <button disabled={isInvalid} type="submit" className="">
                 Sign UP
               </button>

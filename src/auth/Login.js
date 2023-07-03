@@ -1,10 +1,13 @@
 import React, { useState, useContext } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { Link, useHistory } from "react-router-dom";
 import FirebaseContext from "../contexts/firebase";
 
 const Login = () => {
   const { firebase } = useContext(FirebaseContext);
+  const { auth } = useContext(FirebaseContext);
+  const { firestore } = useContext(FirebaseContext);
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +17,7 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      await signInWithEmailAndPassword(auth, emailAddress, password);
       history.push("/");
     } catch (error) {
       setEmailAddress("");
@@ -22,6 +25,7 @@ const Login = () => {
       setError(error.message);
     }
   };
+
   return (
     <>
       <div className="">

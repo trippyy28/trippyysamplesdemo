@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import UserContext from "../contexts/user";
 import FirebaseContext from "../contexts/firebase";
 const Container = styled.div`
@@ -28,6 +29,7 @@ function Account() {
         </div>
       ) : (
         <div>
+          <Link to="/login">Login</Link>
           <h3>Please Sign In</h3>
         </div>
       )}

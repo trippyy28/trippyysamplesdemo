@@ -9,11 +9,14 @@ import { useAudio } from "../contexts/AudioContext";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import UserContext from "../contexts/user";
+import bg from "../imgs/bg.jpeg";
 
 const Container = styled.div`
   border-radius: 25px;
   padding: 10px;
   background-color: #a2e9ff;
+  /* background-image: url(${bg}); */
+  background-size: cover;
 `;
 
 const Product = styled.div`

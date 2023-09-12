@@ -3,11 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import Basket from "./Basket";
+import Account from "./Account";
 import FirebaseContext from "../contexts/firebase";
 import UserContext from "../contexts/user";
 import { useBasket } from "../contexts/BasketContext";
 import { FiShoppingCart } from "react-icons/fi";
+import { VscAccount } from "react-icons/vsc";
 import { doc, getDoc } from "firebase/firestore";
+
 import star from "../imgs/star-alone.png";
 
 const Background = styled.div`
@@ -65,8 +68,43 @@ const Header = () => {
         </Link>
         {user ? <h4>Hello! {user.displayName}</h4> : <h4>Welcome</h4>}
       </LeftSection>
-      <h1>trippysamples</h1>
+      <h2>trippysamples</h2>
+      <RightSection>
+        {/* <Link onClick={() => auth.signOut()}>Logout</Link> */}
+        <OverlayTrigger
+          placement="bottom"
+          trigger={["click"]}
+          overlay={
+            <Tooltip id="button-tooltip-2">
+              <Account />
+            </Tooltip>
+          }
+        >
+          {({ ...triggerHandler }) => (
+            <h2 {...triggerHandler} className="basket">
+              <VscAccount> </VscAccount>
+            </h2>
+          )}
+        </OverlayTrigger>
 
+        <OverlayTrigger
+          placement="bottom"
+          trigger={["click"]}
+          overlay={
+            <Tooltip id="button-tooltip-2">
+              <Basket />
+            </Tooltip>
+          }
+        >
+          {({ ...triggerHandler }) => (
+            <h2 {...triggerHandler} className="basket">
+              <FiShoppingCart> </FiShoppingCart>
+              <span className="size-of-carts">({cartItems.length})</span>
+            </h2>
+          )}
+        </OverlayTrigger>
+      </RightSection>
+      {/* 
       {user ? (
         <RightSection>
           <Link onClick={() => auth.signOut()}>Logout</Link>
@@ -107,7 +145,7 @@ const Header = () => {
             )}
           </OverlayTrigger>
         </RightSection>
-      )}
+      )} */}
     </Background>
   );
 };
